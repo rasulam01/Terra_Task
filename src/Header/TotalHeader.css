@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+.totalHeader {
+  position: relative;
+  height: 60px;
+}
+.totalBlock {
+  position: absolute;
+  width: 229px;
+  height: 34px;
+  left: 77px;
+  top: 13px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.3px;
+}
+
+.totalBlockOpened {
+  position: absolute;
+  width: 229px;
+  height: 34px;
+  left: 77px;
+  top: 13px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.3px;
+  margin-left: 156px;
+}
+
+.totalTimeSpansWeek,
+.totalTimeSpansMonth {
+  position: absolute;
+  cursor: pointer;
+  height: 20px;
+  width: 61px;
+  left: 846px;
+  top: 20px;
+}
+.totalTimeSpans {
+  cursor: pointer;
+}
+.totalTimeSpans div + div {
+  margin-left: 73px;
+}
+.totalTimeSpansSelected {
+  border-bottom: 3px solid #6cffd5;
+  font-weight: bold;
+}
+.searchCircle img {
+  position: absolute;
+  right: 24.75%;
+  bottom: 41.75%;
+  box-sizing: border-box;
+  width: 13.65px;
+  height: 13px;
+}
+
+
+.bellNotified img {
+  position: absolute;
+  top: 34%;
+  right: 20.75%;
+}
+.userName p {
+  position: absolute;
+  top: 5%;
+  right: 12.75%;
+  font-weight: bold;
+}
+.userImage img {
+  position: absolute;
+  top: 5%;
+  right: 7.75%;
+  border-radius: 50%;
+  border: 2.5px solid #6cffd5;
+}

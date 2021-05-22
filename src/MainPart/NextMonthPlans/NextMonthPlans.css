@@ -1,0 +1,21 @@
+.nextWeekPlans {
+  position: absolute;
+  width: 408px;
+  height: 426px;
+  left: 564px;
+  top: 385px;
+
+  background: #ffffff;
+  border-radius: 15px;
+}
+.nextWeekPlansName{
+   position: absolute;
+   left: 5%;
+
+}
+.nextWeekPlansCreate{
+    position: absolute;
+    right: 5%;
+    top: 6%;
+    cursor: pointer;
+}

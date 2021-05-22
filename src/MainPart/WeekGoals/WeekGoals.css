@@ -1,0 +1,23 @@
+.weekGoals{
+    position: absolute;
+width: 408px;
+height: 266px;
+left: 136px;
+top: 545px;
+
+background: #FFFFFF;
+border-radius: 15px;
+}
+.weekGoalsName{
+    position: absolute;
+    width: 237px;
+    height: 24.36px;
+    
+}
+
+.weekGoalsCreate {
+    position: absolute;
+    right: 7.03%;
+    top: 8.02%;
+    cursor: pointer;
+}

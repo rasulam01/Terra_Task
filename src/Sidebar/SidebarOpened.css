@@ -1,0 +1,85 @@
+.totalSidebarOpened {
+  position: relative;
+  height: calc(100vh + 300px);
+  width: 251px;
+  left: 0px;
+  top: 0px;
+  background: white;
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.totalSidebarName {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -7%;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.totalSidebarOpened img {
+  position: absolute;
+  left: 41px;
+}
+.totalSidebarOpened span {
+  margin-left: 66px;
+}
+
+.totalSidebarPanelOpened div + div {
+  transform: translateY(300%);
+  margin-top: 36px;
+}
+
+.totalSidebarPanelArrowOpened {
+  transform: translateY(200%);
+}
+
+.totalSidebarPanelHomeOpened img {
+  transform: translateX(-15%);
+}
+.totalSidebarPanelOpened img,
+span {
+  cursor: pointer;
+}
+
+.description {
+  font-weight: bold;
+}
+.totalSidebarPanelStats span {
+  transform: translateY(50%);
+}
+.totalSidebarPanelButton button {
+  width: 175px;
+  height: 45px;
+  background: white;
+  transform: translateY(-100%);
+  border-radius: 8px;
+  border: 1px solid #25315b;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.totalSidebarPanelArrowOpened {
+  margin-right: 55px;
+}
+.totalSidebarPanelListOpened {
+  margin-right: 61px;
+}
+.totalSidebarPanelBagOpened {
+  margin-right: 40px;
+}
+.totalSidebarPanelCheckOpened {
+  margin-right: 51px;
+}
+.totalSidebarPanelKeylockOpened {
+  margin-right: 13px;
+}
+.totalSidebarPanelBookOpened {
+  margin-right: 69px;
+}
+.totalSidebarPanelStatsOpened {
+  margin-right: 79px;
+}
+.totalSidebarPanelSettingsOpened {
+  margin-right: 38px;
+}

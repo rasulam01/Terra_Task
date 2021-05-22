@@ -1,0 +1,32 @@
+.weekPlan {
+  position: absolute;
+  height: 426px;
+  width: 408px;
+  left: 136px;
+  top: 99px;
+  border-radius: 15px;
+  background: white;
+}
+.weekPlanName {
+  height: 25px;
+  width: 237px;
+  left: 159px;
+  top: 122px;
+  
+}
+.weekPlanNameMoved {
+  height: 25px;
+  width: 237px;
+  left: 500px;
+  top: 122px;
+}
+.weekPlanCreate {
+  position: absolute;
+  right: 7.03%;
+  top: 6.02%;
+  cursor: pointer;
+}
+.weekPlanData{
+  background: rgba(220, 100, 255, .3);
+}
+

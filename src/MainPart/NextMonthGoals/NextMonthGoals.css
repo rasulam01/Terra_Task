@@ -1,0 +1,20 @@
+.nextWeekGoals {
+  position: absolute;
+  width: 408px;
+  height: 266px;
+  left: 564px;
+  top: 99px;
+
+  background: #ffffff;
+  border-radius: 15px;
+}
+.nextWeekGoalsName {
+  position: absolute;
+  left: 5%;
+}
+.nextWeekGoalsCreate{
+    position: absolute;
+    right: 5%;
+    top: 9%;
+    cursor: pointer;
+}

@@ -1,0 +1,40 @@
+.totalSidebar {
+  position: relative;
+  height: calc(100vh + 300px);
+  width: 95px;
+  left: 0px;
+  top: 0px;
+  background: white;
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.05);
+}
+
+.totalSidebarName {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-top: 20px;
+  
+  
+  font-size: 24px;
+  font-weight: bold;
+}
+.totalSidebarPanel div + div {
+  transform: translateY(300%);
+  margin-top: 36px;
+}
+
+.totalSidebarPanel div {
+  cursor: pointer;
+}
+.totalSidebarPanelArrow {
+  transform: translateY(200%);
+}
+.totalSidebarPanelStats img {
+  transform: translateY(100%);
+}
+.totalSidebarPanelSettings img {
+  transform: translateY(100%);
+}
+.totalSidebarPanelHome img {
+  transform: translateY(-60%);
+}

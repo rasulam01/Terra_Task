@@ -1,0 +1,22 @@
+.weekDiary {
+  position: absolute;
+  width: 350px;
+  height: 425px;
+  left: 992px;
+  top: 99px;
+
+  background: #ffffff;
+  border-radius: 15px;
+}
+.weekDiaryName {
+  position: absolute;
+  width: 254px;
+  
+  
+}
+.weekDiaryCreate{
+    position: absolute;
+    top: 6%;
+    right: 5%;
+    cursor: pointer;
+}
