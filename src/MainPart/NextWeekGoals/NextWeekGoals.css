@@ -18,3 +18,15 @@
     top: 9%;
     cursor: pointer;
 }
+
+.nextWeekGoalsData {
+  margin-top: 60px;
+  text-align: left;
+  margin-left: 5%;
+}
+.nextWeekGoalsData li{
+  list-style-type: none;
+}
+.nextWeekGoalsData ul{
+  float: left;
+}

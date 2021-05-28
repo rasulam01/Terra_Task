@@ -20,12 +20,12 @@ export const TotalHeader = ({ sidebarStatusTrue }) => {
                 </div>
                 <div className="search">
                     <div className="searchCircle">                    
-                       <img src={MagnifyingGlass} />
+                       <img src={MagnifyingGlass} alt="Create"/>
                     </div>                                                    
                 </div>
                 <div className="bell">                
                     <div className="bellNotified">                        
-                        <img src={Bell} />
+                        <img src={Bell} alt="Create"/>
                     </div>
                 </div>
                 <div className="user">
@@ -33,7 +33,7 @@ export const TotalHeader = ({ sidebarStatusTrue }) => {
                         <p>Chryssalid</p>
                     </div>
                     <div className="userImage">
-                        <img src={UserImage} />
+                        <img src={UserImage} alt="Create"/>
                     </div>
                 </div>
             </div>

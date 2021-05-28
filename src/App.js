@@ -1,6 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { TotalHeader } from "./Header/TotalHeader";
 import { TotalSidebarClosed } from "./Sidebar/SidebarClosed";
@@ -10,8 +9,6 @@ import { MainPartMonth } from "./MainPart/MainPartMonth/MainPartMonth";
 import { TheFormCreater } from "./TheFormCreater/TheFormCreater";
 
 function App() {
-  const [array, setArray] = useState([]);
-  const [cloneArray, setCloneArray] = useState([...array]);
   const [sidebarStatusTrue, setSidebarStatus] = useState(true);
   const [createFormVisibility, setCreateFormVisibility] = useState(false);
 
@@ -26,19 +23,9 @@ function App() {
     setSidebarStatus(!sidebarStatusTrue);
   };
 
-  const deletePlan = async (pos) => {
-    if (
-      window.confirm(
-        `Do you wish to delete the plan ${cloneArray.description}?`
-      )
-    ) {
-      const clonedCloneArray = [...cloneArray];
-      clonedCloneArray.splice(pos, 1);
-      await axios.delete(
-        `https://60a7a2c88532520017ae4a3b.mockapi.io/weekplan/${pos}`
-      );
-    }
-  };
+  
+
+  
 
   return (
     <BrowserRouter>
@@ -57,9 +44,8 @@ function App() {
             <>
               <TheFormCreater
                 hideCreateForm={hideCreateForm}
-                cloneArray={cloneArray}
-                setCloneArray={setCloneArray}
-                deletePlan={() => deletePlan()}
+                
+                
               />
               <div className="cover" onClick={hideCreateForm} />
             </>

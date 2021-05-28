@@ -9,7 +9,7 @@ export const AnalyticsMonth = () => {
             </div>
             
             <div className="analyticsCreate">
-                <img src={CreateIcon} />
+                <img src={CreateIcon} alt="Create"/>
             </div>
         </div>
     )

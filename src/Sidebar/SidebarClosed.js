@@ -16,31 +16,31 @@ export const TotalSidebarClosed = ({ logo, showSidebar }) => {
       <div className="totalSidebarName">{logo}</div>
       <div className="totalSidebarPanel">
         <div className="totalSidebarPanelArrow">
-          <img src={ArrowRight} onClick={showSidebar} />
+          <img src={ArrowRight} onClick={showSidebar} alt="Create"/>
         </div>
         <div className="totalSidebarPanelHome">
-          <img src={Home} />
+          <img src={Home} alt="Create"/>
         </div>
         <div className="totalSidebarPanelList">
-          <img src={List} />
+          <img src={List} alt="Create"/>
         </div>
         <div className="totalSidebarPanelBag">
-          <img src={Bag} />
+          <img src={Bag} alt="Create"/>
         </div>
         <div className="totalSidebarPanelCheck">
-          <img src={Check} />
+          <img src={Check} alt="Create"/>
         </div>
         <div className="totalSidebarPanelKeylock">
-          <img src={Keylock} />
+          <img src={Keylock} alt="Create"/>
         </div>
         <div className="totalSidebarPanelBook">
-          <img src={Book} />
+          <img src={Book} alt="Create"/>
         </div>
         <div className="totalSidebarPanelStats">
-          <img src={Stats} />
+          <img src={Stats} alt="Create"/>
         </div>
         <div className="totalSidebarPanelSettings">
-          <img src={Settings} />
+          <img src={Settings} alt="Create"/>
         </div>
       </div>
       

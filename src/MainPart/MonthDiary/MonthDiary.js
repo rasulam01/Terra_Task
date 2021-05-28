@@ -7,7 +7,7 @@ export const MonthDiary = ({ time, showCreateForm }) => {
                 <h2>Дневник {time}</h2>
             </div>
             <div className="weekDiaryCreate">
-                <img src={CreateIcon} onClick={showCreateForm}/>
+                <img src={CreateIcon} onClick={showCreateForm} alt="Create"/>
             </div>
         </div>
     )

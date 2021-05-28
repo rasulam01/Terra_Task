@@ -7,7 +7,7 @@ export const NextMonthGoals = ({ time, showCreateForm }) => {
                 <h2>Цели следующего {time}</h2>
             </div>
             <div className="nextWeekGoalsCreate">
-                <img src={CreateIcon} onClick={showCreateForm}/>
+                <img src={CreateIcon} onClick={showCreateForm} alt="Create"/>
             </div>
 
 

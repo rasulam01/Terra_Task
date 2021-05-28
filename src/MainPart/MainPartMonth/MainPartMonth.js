@@ -5,7 +5,7 @@ import { NextMonthPlans } from '../NextMonthPlans/NextMonthPlans'
 import { NextMonthGoals } from '../NextMonthGoals/NextMonthGoals'
 import { MonthDiary } from '../MonthDiary/MonthDiary' 
 import { AnalyticsMonth } from '../AnalyticsMonth/AnalyticsMonth'
-import { Analytics } from '../Analytics/Analytics'
+
 export const MainPartMonth = ({ showCreateForm, hideCreateForm }) => {
     return (
         <div className='mainPartMonth'>

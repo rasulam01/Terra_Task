@@ -15,35 +15,35 @@ export const TotalSidebarOpened = ({ logo, showSidebar }) => {
       <div className="totalSidebarName">{logo}</div>
       <div className="totalSidebarPanelOpened">
         <div className="totalSidebarPanelArrowOpened opened">
-          <img src={ArrowLeft} onClick={showSidebar} />{" "}
+          <img src={ArrowLeft} onClick={showSidebar} alt="Create"/>{" "}
           <span className="description" onClick={showSidebar}>
             Свернуть
           </span>
         </div>
         <div className="totalSidebarPanelHomeOpened opened">
-          <img src={Home} /> <span className="description">Колесо баланса</span>
+          <img src={Home} alt="Create"/> <span className="description">Колесо баланса</span>
         </div>
         <div className="totalSidebarPanelListOpened opened">
-          <img src={List} /> <span className="description">Дневник</span>
+          <img src={List} alt="Create"/> <span className="description">Дневник</span>
         </div>
         <div className="totalSidebarPanelBagOpened opened">
-          <img src={Bag} /> <span className="description">Календарь</span>
+          <img src={Bag} alt="Create"/> <span className="description">Календарь</span>
         </div>
         <div className="totalSidebarPanelCheckOpened opened">
-          <img src={Check} /> <span className="description">Мои цели</span>
+          <img src={Check} alt="Create"/> <span className="description">Мои цели</span>
         </div>
         <div className="totalSidebarPanelKeylockOpened opened">
-          <img src={Keylock} />{" "}
+          <img src={Keylock} alt="Create"/>{" "}
           <span className="description">Мои ценности</span>
         </div>
         <div className="totalSidebarPanelBookOpened opened">
-          <img src={Book} /> <span className="description">Списки</span>
+          <img src={Book} alt="Create"/> <span className="description">Списки</span>
         </div>
         <div className="totalSidebarPanelStatsOpened opened">
-          <img src={Stats} /> <span className="description">Итоги</span>
+          <img src={Stats} alt="Create"/> <span className="description">Итоги</span>
         </div>
         <div className="totalSidebarPanelSettingsOpened opened">
-          <img src={Settings} /> <span className="description">Настройки</span>
+          <img src={Settings} alt="Create"/> <span className="description">Настройки</span>
         </div>
         <div className="totalSidebarPanelButton">
           <button className="totalSidebarPanelExit">Выйти</button>

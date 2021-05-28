@@ -8,7 +8,7 @@ export const NextMonthPlans = ({ time, showCreateForm}) => {
                 <h2>План следующего {time}</h2>
             </div>
             <div className="nextWeekPlansCreate">
-                <img src={CreateIcon} onClick={showCreateForm}/>
+                <img src={CreateIcon} onClick={showCreateForm} alt="Create"/>
             </div>
         </div>
     )

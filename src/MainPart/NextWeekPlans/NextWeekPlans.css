@@ -8,14 +8,25 @@
   background: #ffffff;
   border-radius: 15px;
 }
-.nextWeekPlansName{
-   position: absolute;
+/* .nextWeekPlansName{
+   position: absolute; 
    left: 5%;
 
-}
+} */
 .nextWeekPlansCreate{
     position: absolute;
     right: 5%;
     top: 6%;
     cursor: pointer;
+}
+
+.nextWeekPlansData{
+  margin-top: 60px;
+  text-align: left;
+  
+  
+  
+}
+.nextWeekPlansData ul{
+  list-style-type: none;
 }

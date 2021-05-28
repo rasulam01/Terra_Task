@@ -2,7 +2,7 @@ import './TheFormCreater.css'
 import axios from "axios";
 import { useState } from "react";
 import CloseIcon from '../Assets/close_button.png'
-export const TheFormCreater = ( hideCreateForm ) => {
+export const TheFormCreater = ({ hideCreateForm }) => {
   const [value, setValue] = useState("");
 
   const setInputValue = (e) => {
@@ -12,12 +12,11 @@ export const TheFormCreater = ( hideCreateForm ) => {
     e.preventDefault();
 
     const object = {
-      createdAt: value,
       name: "flip-flop",
-      avatar: "111"
+      description: value,
     };
     axios
-      .post(`https://60a7a2c88532520017ae4a3b.mockapi.io/weekgoal`, object)
+      .post(`https://60a7a2c88532520017ae4a3b.mockapi.io/analytics`, object)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -26,13 +25,14 @@ export const TheFormCreater = ( hideCreateForm ) => {
         console.log(err);
       });
   };
-  const deletePosts = () => {
-      axios.delete(`https://60a7a2c88532520017ae4a3b.mockapi.io/weekgoal`)
-  }
+  
+  
+  
 
   return (
     <form className="theFormCreater" onSubmit={handleSubmit}>
       <h2>Put a plan for the week</h2>
+      <img src={CloseIcon} onClick={hideCreateForm} alt="Close"/>
       <div>
         <input
           type="text"
@@ -46,7 +46,7 @@ export const TheFormCreater = ( hideCreateForm ) => {
         <button type="submit" className="pushButton">
           Post a post
         </button>
-        <button onClick={deletePosts} className="pushButton" >
+        <button className="pushButton" >
           Delete posts
         </button>
       </div>

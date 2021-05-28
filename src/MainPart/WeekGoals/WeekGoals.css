@@ -12,6 +12,7 @@ border-radius: 15px;
     position: absolute;
     width: 237px;
     height: 24.36px;
+    left: 3%;
     
 }
 
@@ -21,3 +22,22 @@ border-radius: 15px;
     top: 8.02%;
     cursor: pointer;
 }
+.weekGoalsData{
+    background: lightblue;
+    width: 75%;
+
+    margin-top: 60px;
+    margin-left: 30px;
+
+}
+.checkgoal{
+    position: absolute;
+    left: 20px;
+}
+.weekGoalsData ul{
+    list-style-type: none;
+    text-align: left;
+    margin-left: -8%;
+}
+
+

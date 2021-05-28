@@ -19,3 +19,12 @@
     top: 9%;
     cursor: pointer;
 }
+.analyticsData{
+  margin-top: 60px;
+}
+.analyticsData li{
+  text-align: left;
+  margin-left: 5%;
+  list-style-type: none;
+
+}

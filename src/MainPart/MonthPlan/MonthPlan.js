@@ -20,7 +20,7 @@ export const MonthPlan = ({ time, showCreateForm }) => {
                 <h2>План {time}</h2>
             </div>
             <div className="weekPlanCreate">
-                <img src={CreateIcon} onClick={showCreateForm}/>
+                <img src={CreateIcon} onClick={showCreateForm} alt="Create"/>
             </div>
             <div className="weekPlanData">
                 <ul>
