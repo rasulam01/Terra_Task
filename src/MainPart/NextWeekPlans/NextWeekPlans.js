@@ -13,8 +13,8 @@ export const NextWeekPlans = ({ time, showCreateForm }) => {
     }
     useEffect(() => {
         fetchData()
-    })
-    let content = data.map(data => <li>{data.description}</li>)
+    }, [])
+    let content = data.map(data => <li key={data.id}>{data.description}</li>)
     return (
         <div className="nextWeekPlans">
             <div className="nextWeekPlansName">

@@ -2,12 +2,13 @@ import "./WeekPlan.css";
 import CreateIcon from "../../Assets/CreateIcon.png";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { TheFormCreater } from "../../TheFormCreater/TheFormCreater";
 
 export const WeekPlan = ({ time, showCreateForm }) => {
   const [data, setData] = useState([]);
   const [progressCount, setProgressCount] = useState(0);
 
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState([false, false, false, false]);
 
   async function fetchData() {
     let response = await axios.get(
@@ -19,7 +20,8 @@ export const WeekPlan = ({ time, showCreateForm }) => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
+
   // function ifChecked() {
 
   //     if (checked) {
@@ -35,37 +37,48 @@ export const WeekPlan = ({ time, showCreateForm }) => {
   //     setProgressCount(content.length)
   // }
   // }
-  const ifChecked = () => {
-    if (!checked) {
-      setProgressCount(progressCount + 1);
-      
+
+  const ifChecked = (e, pos) => {
+    const listChecked = [...checked];
+
+    listChecked[pos] = e.target.checked;
+
+    setChecked(listChecked);
+
+    if (listChecked[pos]) {
+      setProgressCount((c) => c + 1);
     } else {
-      setProgressCount(progressCount - 1);
-      
-      
+      setProgressCount((c) => c - 1);
     }
-    setChecked(!checked);
-    setPercentage((progressCount / content.length) * 100)
   };
 
-  let content = data.map((data) => (
+  let content = data.map((data, pos) => (
     <li key={data.id} className="weekPlanList">
       <input
         key={data.id}
         type="checkbox"
         className="checkplan"
-        defaultChecked={checked}
-        onChange={(e) => {
-          // setChecked(!checked)
-          ifChecked();
-          console.log(e.target.key);
-        }}
+        checked={checked[pos]}
+        onChange={(e) => ifChecked(e, pos)}
       />
       {data.description}
     </li>
   ));
 
-  const [percentage, setPercentage] = useState(0);
+  const obj = {
+    "id": content.length + 1,
+    "createdAt": new Date(),
+    "name": "flip-flop",
+    "avatar": "https://cdn.fakercloud.com/avatars/gauchomatt_128.jpg",
+    "description": "Smashing"
+  }
+
+  const temp = [...data];
+
+  temp.push(obj)
+
+  setData(temp)
+
   return (
     <div className="weekPlan">
       <div className="weekPlanName">
@@ -79,7 +92,11 @@ export const WeekPlan = ({ time, showCreateForm }) => {
         <div className="weekPlanProgressBar">
           <div
             className="weekPlanProgressBarFiller"
-            style={{ width: percentage * 2.88 }}
+            style={{
+              width:
+                content.length > 0 &&
+                (progressCount / content.length) * 100 * 2.88,
+            }}
           ></div>
         </div>
       </div>

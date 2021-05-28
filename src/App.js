@@ -23,10 +23,6 @@ function App() {
     setSidebarStatus(!sidebarStatusTrue);
   };
 
-  
-
-  
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -42,11 +38,7 @@ function App() {
 
           {createFormVisibility ? (
             <>
-              <TheFormCreater
-                hideCreateForm={hideCreateForm}
-                
-                
-              />
+              <TheFormCreater hideCreateForm={hideCreateForm} />
               <div className="cover" onClick={hideCreateForm} />
             </>
           ) : null}

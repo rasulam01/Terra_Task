@@ -8,12 +8,11 @@ export const NextWeekGoals = ({ time, showCreateForm }) => {
         let response = await axios.get('https://60a7a2c88532520017ae4a3b.mockapi.io/weekgoals')
         let info = await response.data
         setData(info)
-
     }
     useEffect(() => {
         fetchData()
-    })
-    let content = data.map(data => <li>{data.description}</li>)
+    }, [])
+    let content = data.map(data => <li key={data.id}>{data.description}</li>)
     return (
         <div className="nextWeekGoals">
             <div className="nextWeekGoalsName">
@@ -25,8 +24,6 @@ export const NextWeekGoals = ({ time, showCreateForm }) => {
             <div className="nextWeekGoalsData">
                 {content}
             </div>
-
-
 
         </div>
     )

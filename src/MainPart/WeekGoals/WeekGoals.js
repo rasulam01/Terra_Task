@@ -8,12 +8,11 @@ export const WeekGoals = ({ time, showCreateForm }) => {
         let response = await axios.get('https://60a7a2c88532520017ae4a3b.mockapi.io/weekgoals')
         let info = await response.data
         setData(info)
-
     }
     useEffect(() => {
         fetchData()
-    })
-    let content = data.map(data => <li><input type="checkbox" className="checkgoal"></input>{data.description}</li>)
+    }, [])
+    let content = data.map(data => <li key={data.id}><input type="checkbox" className="checkgoal"></input>{data.description}</li>)
     return (
         <div className="weekGoals">
             <div className="weekGoalsName">

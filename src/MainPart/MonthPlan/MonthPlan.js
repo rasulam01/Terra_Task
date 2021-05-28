@@ -24,7 +24,7 @@ export const MonthPlan = ({ time, showCreateForm }) => {
             </div>
             <div className="weekPlanData">
                 <ul>
-                  {data.map(data => <li className="monthPlanData">{data.name}</li>)}
+                  {data.map(data => <li key={data.id} className="monthPlanData">{data.name}</li>)}
                 </ul>
             </div>
         </div>
