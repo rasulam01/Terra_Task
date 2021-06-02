@@ -36,16 +36,7 @@ function App() {
             <TotalSidebarOpened logo="Samo" showSidebar={showSidebar} />
           )}
 
-<<<<<<< HEAD
-          
-=======
-          {createFormVisibility ? (
-            <>
-              <TheFormCreater hideCreateForm={hideCreateForm} />
-              <div className="cover" onClick={hideCreateForm} />
-            </>
-          ) : null}
->>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe
+
 
           <Switch>
             <Route exact path="/week">

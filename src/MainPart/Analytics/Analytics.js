@@ -26,16 +26,11 @@ export const Analytics = () => {
     }
     useEffect(() => {
         fetchData()
-<<<<<<< HEAD
     })
     let content = data.map((data, pos) => (
         <li key={data.id}><span className="metricName">{data.metric}</span><span className="metricValue">{data.value}</span></li>
     ))
 
-=======
-    }, [])
-    let content = data.map(data => <li key={data.id}>{data.description}</li>)
->>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe
     return (
         <div className="analytics">
             <div className="analyticsName">

@@ -33,7 +33,6 @@ export const NextWeekPlans = ({
     </li>
   ))
 
-<<<<<<< HEAD
   return (
     <div className="nextWeekPlans">
       <div className="nextWeekPlansName">
@@ -57,26 +56,3 @@ export const NextWeekPlans = ({
     </div>
   );
 };
-=======
-    }
-    useEffect(() => {
-        fetchData()
-    }, [])
-    let content = data.map(data => <li key={data.id}>{data.description}</li>)
-    return (
-        <div className="nextWeekPlans">
-            <div className="nextWeekPlansName">
-                <h2>План следующей {time}</h2>
-            </div>
-            <div className="nextWeekPlansCreate">
-                <img src={CreateIcon} onClick={showCreateForm} alt="Create"/>
-            </div>
-            <div className="nextWeekPlansData">
-                <ul>
-                  {content}
-                </ul>
-            </div>
-        </div>
-    )
-}
->>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe

@@ -19,15 +19,11 @@ export const NextWeekGoals = ({ time, showCreateForm, createFormVisibility, hide
     useEffect(() => {
         fetchData()
     }, [])
-<<<<<<< HEAD
     let content = data.map((data, pos) => (
         <li key={data.id} className="nextWeekGoalsList">{data.description}
         </li>
     ))
 
-=======
-    let content = data.map(data => <li key={data.id}>{data.description}</li>)
->>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe
     return (
         <div className="nextWeekGoals">
             <div className="nextWeekGoalsName">
