@@ -3,9 +3,12 @@ import CreateIcon from "../../Assets/CreateIcon.png";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { TheFormCreater } from "../../TheFormCreater/TheFormCreater";
+<<<<<<< HEAD
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import EditAttributesOutlinedIcon from '@material-ui/icons/EditAttributesOutlined';
+=======
+>>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe
 
 
 export const WeekPlan = ({
@@ -19,9 +22,13 @@ export const WeekPlan = ({
   const [data, setData] = useState([]);
   const [progressCount, setProgressCount] = useState(0);
 
+<<<<<<< HEAD
   const [checked, setChecked] = useState([false]);
   const [editingMode, setEditingMode] = useState(null);
   const [editContent, setEditContent] = useState("");
+=======
+  const [checked, setChecked] = useState([false, false, false, false]);
+>>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe
 
   async function fetchData() {
     let response = await axios.get(
@@ -35,6 +42,25 @@ export const WeekPlan = ({
     fetchData();
   }, []);
 
+<<<<<<< HEAD
+=======
+  // function ifChecked() {
+
+  //     if (checked) {
+
+  //         setProgressCount(progressCount + 1)
+  //         setPercentage((progressCount / content.length) * 100)
+  //     }  else {
+  //         setProgressCount(progressCount - 1)
+  //         setPercentage((progressCount / content.length) * 100)
+  //     }
+  //     setPercentage((progressCount / content.length) * 100)
+  //     if (progressCount === content.length) {
+  //     setProgressCount(content.length)
+  // }
+  // }
+
+>>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe
   const ifChecked = (e, pos) => {
     const listChecked = [...checked];
 
@@ -75,6 +101,7 @@ export const WeekPlan = ({
     </li>
   ));
 
+<<<<<<< HEAD
   let editPlan = (id) => {
     const temp = [...data].map(data => {
       if (data.id === id) {
@@ -122,6 +149,21 @@ export const WeekPlan = ({
   // temp.push(obj)
 
   // setData(temp)
+=======
+  const obj = {
+    "id": content.length + 1,
+    "createdAt": new Date(),
+    "name": "flip-flop",
+    "avatar": "https://cdn.fakercloud.com/avatars/gauchomatt_128.jpg",
+    "description": "Smashing"
+  }
+
+  const temp = [...data];
+
+  temp.push(obj)
+
+  setData(temp)
+>>>>>>> 3dca061651b17779a7a1b460d8cb8b0a184312fe
 
   return (
     <div className="weekPlan">

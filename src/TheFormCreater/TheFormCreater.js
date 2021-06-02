@@ -32,8 +32,19 @@ export const TheFormCreater = ({url, hideCreateForm }) => {
         console.log(err);
       });
   };
-  
-  
+
+  const elements = [
+    {
+      id: 1,
+      open: false,
+      api: 'https://60a7a2c88532520017ae4a3b.mockapi.io/analytics'
+    },
+    {
+      id: 2,
+      open: false,
+      api: 'api///'
+    }
+  ]
   
 
   return (

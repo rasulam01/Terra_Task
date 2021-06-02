@@ -1,3 +1,4 @@
+
 import "./WeekGoals.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -79,6 +80,7 @@ export const WeekGoals = ({
                 (progressCount / content.length) * 100 * 2.88,
             }}
           ></div>
+
         </div>
       </div>
       <div className="weekGoalsData">
