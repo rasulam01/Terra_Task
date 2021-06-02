@@ -6,7 +6,7 @@ import { TotalSidebarClosed } from "./Sidebar/SidebarClosed";
 import { TotalSidebarOpened } from "./Sidebar/SidebarOpened";
 import { MainPartWeek } from "./MainPart/MainPartWeek/MainPartWeek";
 import { MainPartMonth } from "./MainPart/MainPartMonth/MainPartMonth";
-import { TheFormCreater } from "./TheFormCreater/TheFormCreater";
+
 
 function App() {
   const [sidebarStatusTrue, setSidebarStatus] = useState(true);
@@ -40,28 +40,21 @@ function App() {
             <TotalSidebarOpened logo="Samo" showSidebar={showSidebar} />
           )}
 
-          {createFormVisibility ? (
-            <>
-              <TheFormCreater
-                hideCreateForm={hideCreateForm}
-                
-                
-              />
-              <div className="cover" onClick={hideCreateForm} />
-            </>
-          ) : null}
+          
 
           <Switch>
             <Route exact path="/week">
               <MainPartWeek
                 showCreateForm={showCreateForm}
                 hideCreateForm={hideCreateForm}
+                createFormVisibility={createFormVisibility}
               />
             </Route>
             <Route exact path="/month">
               <MainPartMonth
                 showCreateForm={showCreateForm}
                 hideCreateForm={hideCreateForm}
+                createFormVisibility={createFormVisibility}
               />
             </Route>
           </Switch>

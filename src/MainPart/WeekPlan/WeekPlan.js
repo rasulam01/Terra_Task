@@ -2,12 +2,26 @@ import "./WeekPlan.css";
 import CreateIcon from "../../Assets/CreateIcon.png";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { TheFormCreater } from "../../TheFormCreater/TheFormCreater";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import EditAttributesOutlinedIcon from '@material-ui/icons/EditAttributesOutlined';
 
-export const WeekPlan = ({ time, showCreateForm }) => {
+
+export const WeekPlan = ({
+  time,
+  showCreateForm,
+  createFormVisibility,
+  hideCreateForm,
+  
+  src
+}) => {
   const [data, setData] = useState([]);
   const [progressCount, setProgressCount] = useState(0);
 
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState([false]);
+  const [editingMode, setEditingMode] = useState(null);
+  const [editContent, setEditContent] = useState("");
 
   async function fetchData() {
     let response = await axios.get(
@@ -19,53 +33,96 @@ export const WeekPlan = ({ time, showCreateForm }) => {
 
   useEffect(() => {
     fetchData();
-  });
-  // function ifChecked() {
+  }, []);
 
-  //     if (checked) {
+  const ifChecked = (e, pos) => {
+    const listChecked = [...checked];
 
-  //         setProgressCount(progressCount + 1)
-  //         setPercentage((progressCount / content.length) * 100)
-  //     }  else {
-  //         setProgressCount(progressCount - 1)
-  //         setPercentage((progressCount / content.length) * 100)
-  //     }
-  //     setPercentage((progressCount / content.length) * 100)
-  //     if (progressCount === content.length) {
-  //     setProgressCount(content.length)
-  // }
-  // }
-  const ifChecked = () => {
-    if (!checked) {
-      setProgressCount(progressCount + 1);
-      
+    listChecked[pos] = e.target.checked;
+
+    setChecked(listChecked);
+
+    if (listChecked[pos]) {
+      setProgressCount((c) => c + 1);
     } else {
-      setProgressCount(progressCount - 1);
-      
-      
+      setProgressCount((c) => c - 1);
     }
-    setChecked(!checked);
-    setPercentage((progressCount / content.length) * 100)
   };
 
-  let content = data.map((data) => (
+  let content = data.map((data, pos) => (
     <li key={data.id} className="weekPlanList">
       <input
         key={data.id}
         type="checkbox"
         className="checkplan"
-        defaultChecked={checked}
-        onChange={(e) => {
-          // setChecked(!checked)
-          ifChecked();
-          console.log(e.target.key);
-        }}
+        checked={checked[pos]}
+        onChange={(e) => ifChecked(e, pos)}
       />
-      {data.description}
+
+      <div className="dataLine" style={{ backgroundColor: data.background }}>
+        {editingMode === data.id ? (<input
+        type="text"
+        onChange={(e) => setEditContent(e.target.value)}
+        value={editContent} />) :
+        (<>{data.description}</>)}
+        <span className="deleteIcon">
+          <DeleteIcon onClick={() => deletePlan(pos)} />
+        </span>
+        <span className="editIcon">
+          {editingMode === null ? <EditOutlinedIcon onClick={() => setEditingMode(data.id)} /> : <EditAttributesOutlinedIcon onClick={() => editPlan(data.id)} />}
+        </span>
+      </div>
     </li>
   ));
 
-  const [percentage, setPercentage] = useState(0);
+  let editPlan = (id) => {
+    const temp = [...data].map(data => {
+      if (data.id === id) {
+        data.description = editContent
+      }
+      return data
+    })
+    const object = {
+      description: editContent
+    }
+
+    axios.put(`https://60a7a2c88532520017ae4a3b.mockapi.io/weekplan/${id}`, object)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+    
+    setData(temp)
+    setEditContent("")
+    setEditingMode(null)
+  }
+
+  let deletePlan = (id) => {
+    const temp = [...data];
+    axios
+      .delete(`https://60a7a2c88532520017ae4a3b.mockapi.io/weekplan/${id}`)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+    const updated = temp.filter((item) => item.id !== id);
+    setData(updated);
+  };
+
+  // const obj = {
+  //   "id": content.length + 1,
+  //   "createdAt": new Date(),
+  //   "name": "flip-flop",
+  //   "avatar": "https://cdn.fakercloud.com/avatars/gauchomatt_128.jpg",
+  //   "description": "Smashing"
+  // }
+
+  // const temp = [...data];
+
+  // temp.push(obj)
+
+  // setData(temp)
+
   return (
     <div className="weekPlan">
       <div className="weekPlanName">
@@ -79,17 +136,27 @@ export const WeekPlan = ({ time, showCreateForm }) => {
         <div className="weekPlanProgressBar">
           <div
             className="weekPlanProgressBarFiller"
-            style={{ width: percentage * 2.88 }}
+            style={{
+              width:
+                content.length > 0 &&
+                (progressCount / content.length) * 100 * 2.88,
+            }}
           ></div>
         </div>
       </div>
 
       <div className="weekPlanData">
-        <ul>
-          {content}
-          {console.log(content)}
-        </ul>
+        <ul>{content}</ul>
       </div>
+      {createFormVisibility ? (
+        <>
+          <TheFormCreater
+            hideCreateForm={hideCreateForm}
+            url="https://60a7a2c88532520017ae4a3b.mockapi.io/weekplan"
+          />
+          <div className="cover" onClick={hideCreateForm} />
+        </>
+      ) : null}
     </div>
   );
 };

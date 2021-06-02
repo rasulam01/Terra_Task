@@ -22,12 +22,19 @@
 }
 .weekDiaryData{
    margin-top: 60px;
-   background: rgba(200, 150, 100, .7);
-   
+   margin-left: -7%;
    text-align: left;
-   padding: 0;
+   
   
 }
 .weekDiaryData ul{
   list-style-type: none;
 }
+
+.noteName{
+  font-weight: bold;
+}
+.diaryContent, .noteName{
+  margin-top: 10px;
+}
+

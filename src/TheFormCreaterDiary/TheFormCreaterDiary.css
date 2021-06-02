@@ -1,4 +1,4 @@
-.theFormCreater{
+.theFormCreaterDiary{
     position: fixed;
     width: 300px;
     height: 200px;
@@ -7,21 +7,31 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 3;
 
 
 }
-.theFormCreater input{
+.theFormCreaterDiaryName{
+    margin-left: 22px;
+}
+.theFormCreaterDiary input{
+    
+    
     width: 80%;
     height: 30px;
     outline: none;
-    transform: translateY(200%);
+    margin-top: 20px;
+    transform: translateY(100%);
+    
+    
+}
+.theFormCreaterDiary input + input{
+    /* margin-top: 32px; */
 }
 .pushButton{
-    transform: translateY(200%);
-
+    margin-top: 32px;
 }
-.theFormCreater img{
+.theFormCreaterDiary img{
     position: absolute;
     top: 3%;
     right: 3%;
@@ -39,11 +49,13 @@
     height: 100%;
     background: rgba(0, 0, 0, .4);
     z-index: 1;
+    border-radius: 10px;
 }
 
-.pushButton{
+.pushDiaryButton{
     border-radius: 10px;
     padding: 10px;
     background: salmon;
     color: whitesmoke;
+    transform: translateY(100%);
 }

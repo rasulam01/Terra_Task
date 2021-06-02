@@ -1,26 +1,25 @@
-import './TheFormCreater.css'
+import './TheFormCreaterDiary.css'
 import axios from "axios";
 import { useState } from "react";
 
 import CloseIcon from '../Assets/close_button.png'
-export const TheFormCreater = ({url, hideCreateForm }) => {
+export const TheFormCreaterDiary = ({url, hideDiaryForm }) => {
+  const [title, setTitle] = useState("")
   const [value, setValue] = useState("");
-
+  
+  
+  const setTitleValue = (e) => {
+      setTitle(e.target.value)
+  }
   const setInputValue = (e) => {
     setValue(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let r = Math.round(Math.random(0, 255) * 255)
-    let g = Math.round(Math.random(0, 255) * 255)
-    let b = Math.round(Math.random(0, 255) * 255)
-    let a = (Math.random().toFixed(2) * .5) 
-  
-
     const object = {
+      name: title,
       description: value,
-      background: `rgb(${r},${g},${b},${a})`
     };
     axios
       .post(url, object)
@@ -37,21 +36,28 @@ export const TheFormCreater = ({url, hideCreateForm }) => {
   
 
   return (
-    <form className="theFormCreater" onSubmit={handleSubmit}>
-      <h2>Put a plan for the week</h2>
-      <img src={CloseIcon} onClick={hideCreateForm} alt="Close"/>
+    <form className="theFormCreaterDiary" onSubmit={handleSubmit}>
+      <h2 className="theFormCreaterDiaryName">A piece of yourself</h2>
+      <img src={CloseIcon} onClick={hideDiaryForm} alt="Close"/>
       <div>
         <input
           type="text"
           name="text"
-          placeholder="Plan description"
+          placeholder="Note name"
+          onChange={setTitleValue}
+          value={title}
+        />
+        <input
+          type="text"
+          name="info"
+          placeholder="Diary piece"
           onChange={setInputValue}
           value={value}
-        />
+          />
       </div>
       <div>
-        <button type="submit" className="pushButton">
-          Post a post
+        <button type="submit" className="pushDiaryButton">
+          Update the diary
         </button>
         
       </div>

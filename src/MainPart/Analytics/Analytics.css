@@ -12,6 +12,7 @@
     position: absolute;
     left: 5%;
     
+    
 }
 .analyticsCreate{
     position: absolute;
@@ -28,3 +29,10 @@
   list-style-type: none;
 
 }
+
+.metricValue{
+  float: right;
+  margin-right: 20px;
+  font-weight: bold;
+}
+

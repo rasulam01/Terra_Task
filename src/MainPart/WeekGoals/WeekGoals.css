@@ -26,18 +26,28 @@ border-radius: 15px;
     background: lightblue;
     width: 75%;
 
-    margin-top: 60px;
+    margin-top: 20px;
     margin-left: 30px;
 
 }
 .checkgoal{
     position: absolute;
-    left: 20px;
+    left: 27px;
+    margin-top: 4px;
 }
 .weekGoalsData ul{
     list-style-type: none;
     text-align: left;
     margin-left: -8%;
+}
+.weekGoalsProgress{
+    margin-top: 62px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    margin-left: 6.5%;
+  
+  
 }
 
 
