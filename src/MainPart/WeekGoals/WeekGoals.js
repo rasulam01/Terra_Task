@@ -42,7 +42,7 @@ export const WeekGoals = ({
 
       <div className="dataLine" style={{ backgroundColor: data.background }}>
 
-        {data.description}
+        {data.id}
       </div>
       </li>
   ))

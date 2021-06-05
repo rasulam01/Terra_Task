@@ -8,6 +8,7 @@ import Keylock from "../Assets/Keylock.svg";
 import Book from "../Assets/Book.svg";
 import Stats from "../Assets/Stats.svg";
 import Settings from "../Assets/Settings.svg";
+import { Link } from 'react-router-dom'
 
 export const TotalSidebarClosed = ({ logo, showSidebar }) => {
 
@@ -25,7 +26,7 @@ export const TotalSidebarClosed = ({ logo, showSidebar }) => {
           <img src={List} alt="Create"/>
         </div>
         <div className="totalSidebarPanelBag">
-          <img src={Bag} alt="Create"/>
+          <Link to="/calendar"><img src={Bag} alt="Create"/></Link>
         </div>
         <div className="totalSidebarPanelCheck">
           <img src={Check} alt="Create"/>
