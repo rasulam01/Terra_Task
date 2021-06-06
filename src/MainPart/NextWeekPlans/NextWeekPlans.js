@@ -3,9 +3,9 @@ import CreateIcon from "../../Assets/CreateIcon.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { TheFormCreater } from "../../TheFormCreater/TheFormCreater";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import EditAttributesOutlinedIcon from "@material-ui/icons/EditAttributesOutlined";
+// import DeleteIcon from "@material-ui/icons/Delete";
+// import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+// import EditAttributesOutlinedIcon from "@material-ui/icons/EditAttributesOutlined";
 
 export const NextWeekPlans = ({
   time,
@@ -15,8 +15,8 @@ export const NextWeekPlans = ({
   
 }) => {
   const [data, setData] = useState([]);
-  const [editingMode, setEditingMode] = useState(null);
-  const [editContent, setEditContent] = useState("");
+  // const [editingMode, setEditingMode] = useState(null);
+  // const [editContent, setEditContent] = useState("");
   async function fetchData() {
     let response = await axios.get(
       "https://60a7a2c88532520017ae4a3b.mockapi.io/weekplan"
@@ -27,7 +27,7 @@ export const NextWeekPlans = ({
   useEffect(() => {
     fetchData();
   }, []);
-  let content = data.map((data, pos) => (
+  let content = data.map((data) => (
     <li key={data.id} className="nextWeekPlanList">
       {data.description}
     </li>

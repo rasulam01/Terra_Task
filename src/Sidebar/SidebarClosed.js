@@ -20,7 +20,7 @@ export const TotalSidebarClosed = ({ logo, showSidebar }) => {
           <img src={ArrowRight} onClick={showSidebar} alt="Create"/>
         </div>
         <div className="totalSidebarPanelHome">
-          <img src={Home} alt="Create"/>
+          <Link to="/"><img src={Home} alt="Create"/></Link>
         </div>
         <div className="totalSidebarPanelList">
           <img src={List} alt="Create"/>

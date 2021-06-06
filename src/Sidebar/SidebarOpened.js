@@ -22,7 +22,7 @@ export const TotalSidebarOpened = ({ logo, showSidebar }) => {
           </span>
         </div>
         <div className="totalSidebarPanelHomeOpened opened">
-          <img src={Home} alt="Create"/> <span className="description">Колесо баланса</span>
+          <Link to="/"><img src={Home} alt="Create"/> <span className="description">Колесо баланса</span></Link>
         </div>
         <div className="totalSidebarPanelListOpened opened">
           <img src={List} alt="Create"/> <span className="description">Дневник</span>

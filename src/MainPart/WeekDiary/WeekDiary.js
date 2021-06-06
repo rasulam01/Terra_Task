@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CreateIcon from "../../Assets/CreateIcon.png";
 import { TheFormCreaterDiary } from "../../TheFormCreaterDiary/TheFormCreaterDiary";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import EditAttributesOutlinedIcon from "@material-ui/icons/EditAttributesOutlined";
+// import DeleteIcon from "@material-ui/icons/Delete";
+// import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+// import EditAttributesOutlinedIcon from "@material-ui/icons/EditAttributesOutlined";
 export const WeekDiary = ({ time }) => {
   const [data, setData] = useState([]);
   const [createDiaryFormVisibility, setCreateFormVisibility] = useState(false);
-  const [editingMode, setEditingMode] = useState(null);
-  const [editContent, setEditContent] = useState("");
+  // const [editingMode, setEditingMode] = useState(null);
+  // const [editContent, setEditContent] = useState("");
   const showDiaryForm = () => {
     setCreateFormVisibility(true);
   };

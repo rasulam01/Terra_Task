@@ -3,15 +3,15 @@ import CreateIcon from '../../Assets/CreateIcon.png'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { TheFormCreaterAnalytics } from '../../TheFormCreaterAnalytics/TheFormCreaterAnalytics'
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import EditAttributesOutlinedIcon from "@material-ui/icons/EditAttributesOutlined";
+// import DeleteIcon from "@material-ui/icons/Delete";
+// import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+// import EditAttributesOutlinedIcon from "@material-ui/icons/EditAttributesOutlined";
 
 export const Analytics = () => {
     const [data, setData] = useState([]);
     const [analyticsFormVisibility, setAnalyticsFormVisibility] = useState(false);
-    const [editingMode, setEditingMode] = useState(null);
-    const [editContent, setEditContent] = useState("");
+    // const [editingMode, setEditingMode] = useState(null);
+    // const [editContent, setEditContent] = useState("");
     const showAnalyticsForm = () => {
         setAnalyticsFormVisibility(true)
     }

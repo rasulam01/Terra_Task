@@ -1,0 +1,90 @@
+
+
+.calendarMonth{
+    position: absolute;
+    width: 80%;
+    height: 75vh;
+    border-radius: 5px;
+    
+    
+    background: wheat;
+    z-index: 0;
+    top: 15%;
+    left: 11%;
+    
+    
+    
+    
+}
+.calendarMonthWeek{
+    display: flex;
+    grid-gap: 1px;
+    
+    background-color: white;
+    
+}
+
+.calendar .day{
+    position: absolute;
+    width: calc(100% / 7);
+    
+    
+    
+    
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 1;
+    text-align: right;
+}
+
+.day{
+    min-height: 115px;
+    min-width: 155px;
+    font-size: 14px;
+    font-family: 'Lato';
+    background: white;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-radius: 5px;
+    
+    
+    
+    border-collapse: collapse;
+    text-align: left;
+    
+}
+
+.selected > *{
+    min-height: 115px;
+    min-width: 155px;
+    font-size: 14px;
+    font-family: 'Lato';
+    background: black;
+    color: red;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-radius: 5px;
+    
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.weekEndDay{
+    min-height: 115px;
+    min-width: 155px;
+    font-size: 14px;
+    font-family: 'Lato';
+    background: darkgray;
+    color: orangered;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-radius: 5px;
+    border-collapse: collapse;
+    
+    
+    
+    
+    
+    text-align: left;
+}
+

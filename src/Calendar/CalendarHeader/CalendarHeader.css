@@ -28,9 +28,9 @@
   margin-left: 156px;
 }
 
-.totalTimeSpansWeek,
-.totalTimeSpansMonth,
-.totalTimeSpansDay {
+.calendarTimeSpansWeek,
+.calendarTimeSpansMonth,
+.calendarTimeSpansDay {
   position: absolute;
   cursor: pointer;
   height: 20px;
@@ -38,6 +38,26 @@
   left: 846px;
   top: 20px;
 }
+.calendarTimeSpansWeek{
+    left: 57%;
+}
+.calendarTimeSpansDay{
+    left: 52%;
+}
+
+.calendarFeatures{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+    transform: translate(-3%, 50%);
+    
+}
+.calendarAdd{
+    transform: translate(275%, 30%);
+}
+
+
 .totalTimeSpans {
   cursor: pointer;
 }
@@ -77,4 +97,10 @@
   border: 2.5px solid #6cffd5;
 }
 
-
+.calendarSwitchDate{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    transform: translateY(25%);
+}

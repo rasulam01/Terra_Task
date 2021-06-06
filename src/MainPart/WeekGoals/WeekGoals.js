@@ -4,9 +4,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CreateIcon from "../../Assets/CreateIcon.png";
 import { TheFormCreater } from "../../TheFormCreater/TheFormCreater";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import EditAttributesOutlinedIcon from '@material-ui/icons/EditAttributesOutlined';
+// import DeleteIcon from "@material-ui/icons/Delete";
+// import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+// import EditAttributesOutlinedIcon from '@material-ui/icons/EditAttributesOutlined';
 export const WeekGoals = ({
   time,
   showCreateForm,
@@ -18,8 +18,8 @@ export const WeekGoals = ({
   const [data, setData] = useState([]);
   const [progressCount, setProgressCount] = useState(0);
   const [checked, setChecked] = useState([false]);
-  const [editingMode, setEditingMode] = useState(null);
-  const [editContent, setEditContent] = useState("");
+  // const [editingMode, setEditingMode] = useState(null);
+  // const [editContent, setEditContent] = useState("");
   async function fetchData() {
     let response = await axios.get(
         'https://60a7a2c88532520017ae4a3b.mockapi.io/weekgoals'
