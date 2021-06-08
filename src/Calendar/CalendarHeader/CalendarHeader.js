@@ -7,9 +7,17 @@ import CalendarAdd from '../../Assets/CalendarAdd.png'
 // import calendarLeftArrow from '../../Assets/CalendarArrowLeft.png'
 // import calendarCenter from '../../Assets/CalendarCenter.png'
 // import calendarRightArrow from '../../Assets/CalendarArrowRight.png'
-import calendarDateSwitch from '../../Assets/CalendarSwitchDate.png'
+// import calendarDateSwitch from '../../Assets/CalendarSwitchDate.png'
+import { useState } from 'react'
+import moment from 'moment'
 
-export const CalendarHeader = ({ sidebarStatusTrue }) => {
+export const CalendarHeader = ({ sidebarStatusTrue, previousMonth, showToday, nextMonth, showReminderCreater }) => {
+    
+
+    
+    
+
+
     return (
         <div className="totalHeader">
             <div className={sidebarStatusTrue ? 'totalBlock' : 'totalBlockOpened'} >
@@ -18,12 +26,12 @@ export const CalendarHeader = ({ sidebarStatusTrue }) => {
             <div className="totalTimeSpans">
                 <div className="calendarFeatures">
                     <div className="calendarAdd">
-                        <img src={CalendarAdd} alt="Add" />
+                        <img src={CalendarAdd} alt="Add" onClick={showReminderCreater}/>
                     </div>
                     <div className="calendarSwitchDate">
-                        <button>{'<'}</button>
-                        <button>Сегодня</button>
-                        <button>{'>'}</button>
+                        <button onClick={previousMonth}>{'<'}</button>
+                        <button onClick={showToday}>Сегодня</button>
+                        <button onClick={nextMonth}>{'>'}</button>
                     </div>
                 </div>
                 <div className="calendarTimeSpansDay">

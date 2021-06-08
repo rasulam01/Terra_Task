@@ -1,0 +1,100 @@
+.calendarReminderCreater{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 450px;
+    height: 661px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .25);
+    z-index: 2;
+    transform: translate(-50%, -35%);
+}
+.calendarReminderCreaterVisit{
+    margin-top: 50px;
+    
+}
+.calendarReminderCreaterVisit input{
+    height: 30px;  
+    background: transparent;
+    border: transparent;
+    outline: none;
+    width: 75%;
+    font-size: 24px;
+    
+}
+.calendarReminderCreaterTypes{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.calendarReminderCreaterTypes div:nth-child(1) {
+    transform: translateX(30%);
+}
+.calendarReminderCreaterTypes div:nth-child(3) {
+    transform: translateX(-30%);
+}
+.calendarReminderCreaterCloser{
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    cursor: pointer;
+}
+.calendarReminderCreaterData{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin-left: 28px;
+}
+.calendarReminderCreaterData div {
+    margin-top: 24px;
+}
+.calendarReminderCreaterData span{
+    margin-left: 24px;
+}
+
+.calendarColorBlock{
+    height: 18px;
+    width: 18px;
+    background: #FF71D8;
+    border-radius: 5px;
+    transform: translate(0%, -100%);
+
+}
+.calendarReminderCreaterDataText:last-child{
+    transform: translateY(200%);
+}
+.calendarReminderCreaterButtons {
+    position: absolute;
+    bottom: 30px;
+    right: 34px;
+    
+
+
+}
+.calendarReminderCreaterButtons button{
+    margin-right: 20px;
+    width: 125px;
+    height: 48px;
+}
+.calendarReminderCreaterDelayButton{
+    background: white;
+    color: #3175D6;
+    border: 1px solid #3175D6;
+    border-radius: 5px;
+    font-size: 18px;
+ 
+}
+.calendarReminderCreaterDoneButton{
+    background: #3175D6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+ 
+}
+.calendarReminderCreaterDataTextArea{
+    
+}
+
+
