@@ -10,6 +10,7 @@ import { CalendarMonth } from "./Calendar/CalendarMonth/CalendarMonth";
 import { Calendar } from "./Calendar/Calendar/Calendar";
 import moment from "moment";
 import { CalendarHeader } from "./Calendar/CalendarHeader/CalendarHeader";
+import { CalendarWeek } from "./Calendar/CalendarWeek/CalendarWeek";
 
 function App() {
   const [sidebarStatusTrue, setSidebarStatus] = useState(true);
@@ -28,14 +29,12 @@ function App() {
     setSidebarStatus(!sidebarStatusTrue);
   };
 
-  
-
-    const showReminderCreater = () => {
-        setReminderVisibility(true)
-    }
-    const hideReminderCreater = () => {
-        setReminderVisibility(false)
-    }
+  const showReminderCreater = () => {
+    setReminderVisibility(true);
+  };
+  const hideReminderCreater = () => {
+    setReminderVisibility(false);
+  };
 
   window.moment = moment;
   moment.updateLocale("en", { week: { dow: 1 } });
@@ -50,6 +49,14 @@ function App() {
   };
   const nextMonth = () => {
     setDate(() => date.clone().add(1, "month"));
+  };
+
+  const previousWeek = () => {
+    setDate(() => date.clone().subtract(1, "week"));
+  };
+  
+  const nextWeek = () => {
+    setDate(() => date.clone().add(1, "week"));
   };
 
   const calendar = [];
@@ -94,7 +101,6 @@ function App() {
           ) : (
             <TotalSidebarOpened logo="Samo" showSidebar={showSidebar} />
           )}
-          
 
           <Switch>
             <Route exact path="/week">
@@ -111,12 +117,18 @@ function App() {
                 createFormVisibility={createFormVisibility}
               />
             </Route>
-            <Route exact path="/calendarMonth">
-              <CalendarMonth
-                sidebarStatusTrue={sidebarStatusTrue}                
-                date={date}     
+            <Route exact path="/calendarWeek">
+              <CalendarWeek                
+                date={date}
                 reminderVisibility={reminderVisibility}
-                hideReminderCreater={hideReminderCreater}                         
+                hideReminderCreater={hideReminderCreater}
+              />
+            </Route>
+            <Route exact path="/calendarMonth">
+              <CalendarMonth                
+                date={date}
+                reminderVisibility={reminderVisibility}
+                hideReminderCreater={hideReminderCreater}
               />
             </Route>
           </Switch>

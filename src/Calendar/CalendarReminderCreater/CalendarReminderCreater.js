@@ -31,12 +31,12 @@ export const CalendarReminderCreater = ({hideReminderCreater}) => {
       </div>
       <img src={ClosingIcon} className="calendarReminderCreaterCloser" onClick={hideReminderCreater} alt="shut" />
       <div className="calendarReminderCreaterData">
-          <div><img src={Clock} alt="time" /><span className="calendarReminderCreaterDataText">Вторник, 4 мая  12:00-16:00</span></div>
+          <div><img src={Clock} alt="time" /><span className="calendarReminderCreaterDataText">Вторник, 4 мая   12:00-16:00</span></div>
           <div><img src={Flag} alt="tricolor" /><span className="calendarReminderCreaterDataText">3 раза в неделю</span></div>
           <div><img src={People} alt="person" /><span className="calendarReminderCreaterDataText">Ксения Донская</span></div>
           <div><img src={Location} alt="place" /><span className="calendarReminderCreaterDataText">Москва Сити</span></div>
           <div><img src={Calendar} alt="date" /><span className="calendarReminderCreaterDataText">Ксюша Донская</span></div>
-          <div><div className="calendarColorBlock" /><span className="calendarReminderCreaterDataTextArea">Сфера: Благотворительность</span></div>
+          <div><div className="calendarColorBlock" /><div className="calendarColorText">Сфера: Благотворительность</div></div>
       </div>
       <div className="calendarReminderCreaterButtons">
           <button className="calendarReminderCreaterDelayButton" onClick={hideReminderCreater}>Отложить</button>

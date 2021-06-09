@@ -61,9 +61,11 @@
     transform: translate(0%, -100%);
 
 }
-.calendarReminderCreaterDataText:last-child{
-    transform: translateY(200%);
+.calendarColorText{
+    transform: translate(9%,-300%);
 }
+
+
 .calendarReminderCreaterButtons {
     position: absolute;
     bottom: 30px;

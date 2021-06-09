@@ -1,0 +1,87 @@
+.calendarWeek{
+    position: absolute;
+    width: 80%;
+    height: 100vh;
+    border-radius: 5px;            
+    top: 15%;
+    left: 11%; 
+              
+}
+
+.calendarWeekDay{
+    display: flex;
+    grid-gap: 1px;    
+    background-color: white; 
+     
+}
+
+
+.dayWeek, .selectedWeek > *, .currentWeek, .weekEndWeek{
+    min-height: 500px;
+    min-width: 155px;
+    font-size: 48px;
+    font-family: 'Lato';
+    background: white;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-radius: 5px;            
+    border-collapse: collapse;
+    text-align: center;
+    
+}
+
+.selectedWeek > *{
+
+    background: black;
+    color: red;
+
+}
+.currentWeek{
+
+    background: orange;
+    color: green;
+
+}
+
+.weekEndWeek{
+
+    background: darkgray;
+    color: orangered;
+
+}
+
+
+
+.calendarWeekDayHeader{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 20px;
+    height: 20px;
+    width: 100%;
+    top: -30px;
+    
+    
+}
+.calendarWeekDayHeader div:nth-child(1) {
+    transform: translateX(20%);
+}
+.calendarWeekDayHeader div:nth-child(7) {
+    transform: translateX(-15%);
+}
+.calendarWeekDayHeader div:nth-child(2) {
+    transform: translateX(5%);
+}
+.calendarWeekDayHeader div:nth-child(3) {
+    transform: translateX(10%);
+}
+.calendarWeekDayHeader div:nth-child(4) {
+    transform: translateX(20%);
+}
+.calendarWeekDayHeader div:nth-child(5) {
+    transform: translateX(15%);
+}
+.calendarWeekDayHeader div:nth-child(6) {
+    transform: translateX(10%);
+}
