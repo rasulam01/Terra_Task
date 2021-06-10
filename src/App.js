@@ -11,6 +11,7 @@ import { Calendar } from "./Calendar/Calendar/Calendar";
 import moment from "moment";
 import { CalendarHeader } from "./Calendar/CalendarHeader/CalendarHeader";
 import { CalendarWeek } from "./Calendar/CalendarWeek/CalendarWeek";
+import { CalendarDay } from "./Calendar/CalendarDay/CalendarDay";
 
 function App() {
   const [sidebarStatusTrue, setSidebarStatus] = useState(true);
@@ -115,6 +116,13 @@ function App() {
                 showCreateForm={showCreateForm}
                 hideCreateForm={hideCreateForm}
                 createFormVisibility={createFormVisibility}
+              />
+            </Route>
+            <Route exact path="/calendarDay">
+              <CalendarDay
+              date={date}
+              reminderVisibility={reminderVisibility}
+              hideReminderCreater={hideReminderCreater}
               />
             </Route>
             <Route exact path="/calendarWeek">

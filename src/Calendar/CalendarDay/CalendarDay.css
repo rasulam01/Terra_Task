@@ -1,0 +1,38 @@
+.calendarDay{
+    position: absolute;
+    width: 80%;
+    height: 100vh;
+    border-radius: 5px;            
+    top: 15%;
+    left: 11%; 
+    text-align: left;
+    
+              
+}
+
+.calendarDateTime{
+    height: 500px;
+    display: absolute;
+    background-color: white; 
+     
+}
+
+.currentDay{
+    background: blue;
+    color: white;   
+    padding: 0;
+}
+
+.calendarDateTimeBlock{
+    
+    background: red;
+    height: calc(100% / 24);
+    border-bottom: 1px solid darkgray;
+
+}
+
+.calendarDateTimeBlockData{
+    position: absolute;
+    color: blue;
+    border-bottom: 1px solid darkgray;
+}

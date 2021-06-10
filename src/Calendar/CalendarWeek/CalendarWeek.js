@@ -11,6 +11,7 @@ export const CalendarWeek = ({date, reminderVisibility, hideReminderCreater}) =>
     moment.updateLocale("en", { week: { dow: 1 } });
     const startingWeek = value.clone().startOf('week').startOf('day')
     const endingWeek = value.clone().endOf('week').endOf('day')
+    
 
     console.log(startingWeek);
     console.log(endingWeek);
