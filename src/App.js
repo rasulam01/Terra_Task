@@ -12,6 +12,7 @@ import moment from "moment";
 import { CalendarHeader } from "./Calendar/CalendarHeader/CalendarHeader";
 import { CalendarWeek } from "./Calendar/CalendarWeek/CalendarWeek";
 import { CalendarDay } from "./Calendar/CalendarDay/CalendarDay";
+import { AnalyticsMonth } from './MainPart/AnalyticsMonth/AnalyticsMonth'
 
 function App() {
   const [sidebarStatusTrue, setSidebarStatus] = useState(true);
@@ -137,9 +138,11 @@ function App() {
                 date={date}
                 reminderVisibility={reminderVisibility}
                 hideReminderCreater={hideReminderCreater}
+                showReminderCreater={showReminderCreater}
               />
             </Route>
           </Switch>
+          
         </main>
       </div>
     </BrowserRouter>

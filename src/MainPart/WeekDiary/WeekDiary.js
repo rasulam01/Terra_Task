@@ -29,10 +29,12 @@ export const WeekDiary = ({ time }) => {
     fetchData();
   }, []);
   let content = data.map((data, pos) => (
+    <ul>
     <li key={data.id}>
       <div className="noteName">{data.name}</div>
       <div className="diaryContent">{data.description}</div>
     </li>
+    </ul>
   )) 
      
   return (

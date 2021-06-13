@@ -6,7 +6,7 @@ import axios from 'axios'
 export const MonthPlan = ({ time, showCreateForm }) => {
     const [data, setData] = useState([]);
     async function fetchData() {
-        let response = await axios.get(`https://60a7a2c88532520017ae4a3b.mockapi.io/weekgoal`)
+        let response = await axios.get(`https://60a7a2c88532520017ae4a3b.mockapi.io/weekplan`)
         let info = await response.data
         setData(info)
 

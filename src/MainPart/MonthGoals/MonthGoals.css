@@ -21,3 +21,10 @@ border-radius: 15px;
     top: 8.02%;
     cursor: pointer;
 }
+
+.weekGoalsLi{
+    text-align: justify;
+    margin-top: 60px;
+    margin-left: 12%;
+    list-style-type: none;
+}

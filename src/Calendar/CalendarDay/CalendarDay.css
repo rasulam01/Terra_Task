@@ -54,3 +54,13 @@
 .calendarDayTimeBlock span + span{
     margin-top: 14px;
 }
+
+.calendarBackendBlockData{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    
+}
+.calendarBackendBlockData span{
+    margin-top: 20px;
+}

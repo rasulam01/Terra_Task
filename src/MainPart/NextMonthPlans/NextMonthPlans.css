@@ -19,3 +19,9 @@
     top: 6%;
     cursor: pointer;
 }
+.nextMonthPlansData{
+  list-style-type: none;
+  text-align: justify;
+  margin-top: 15%;
+  margin-left: 5%;
+}

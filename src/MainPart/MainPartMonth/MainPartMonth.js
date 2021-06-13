@@ -24,10 +24,10 @@ export const MainPartMonth = ({ showCreateForm, hideCreateForm }) => {
           <div className="mainPartMonthDiary">
             <MonthDiary time="месяца" />
           </div>
-          <div className="analytics">
+          
             <AnalyticsMonth />
             
-          </div>
+          
         </div>
     )
 }
