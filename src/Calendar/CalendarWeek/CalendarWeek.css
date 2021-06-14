@@ -85,3 +85,13 @@
 .calendarWeekDayHeader div:nth-child(6) {
     transform: translateX(10%);
 }
+
+.dataWeek{
+    width: 100%;
+    background: #81FFB3;
+    font-size: 20px;
+    text-align: left;
+    
+    
+    
+}

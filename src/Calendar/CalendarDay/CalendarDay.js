@@ -70,6 +70,7 @@ const getData = async(urll) => {
             <div className="calendarDayDate">
             {date.format('dddd')},  {date.format('MMMM')} <span className="currentDay">{date.format('Do')}</span>              
             </div>
+            
             <div className="calendarDayTimeBlock">
               {calendar.map((week) => (
                 
@@ -78,6 +79,7 @@ const getData = async(urll) => {
                   ))
                 
               ))}
+              
               <div className="calendarBackendBlock">
               {backendData.map((data) => (
                 <span className="calendarBackendBlockData" key={data.id}>{data.author}</span>

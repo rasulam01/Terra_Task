@@ -131,6 +131,7 @@ function App() {
                 date={date}
                 reminderVisibility={reminderVisibility}
                 hideReminderCreater={hideReminderCreater}
+                showReminderCreater={showReminderCreater}
               />
             </Route>
             <Route exact path="/calendarMonth">

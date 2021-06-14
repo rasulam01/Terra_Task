@@ -116,7 +116,7 @@
     overflow: hidden;
     border-radius: inherit;
     
-    padding: 0 5px 5px 5px;
+    padding: 0 5px 2px 5px;
     
     
 }
@@ -140,6 +140,8 @@
 }
 .data{
     width: 100%;
+    background: #81FFB3;
+    
     
     
 }

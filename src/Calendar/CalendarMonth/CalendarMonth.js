@@ -9,6 +9,7 @@ export const CalendarMonth = ({date, reminderVisibility, hideReminderCreater, sh
   const [value, setValue] = useState(moment());
   const [backendData, setBackendData] = useState([])
   const [back, setBack] = useState([])
+  
 
   window.moment = moment;
   moment.updateLocale("en", { week: { dow: 1 } });
@@ -17,7 +18,7 @@ export const CalendarMonth = ({date, reminderVisibility, hideReminderCreater, sh
   
   
   const API_URL = 'http://localhost:8000';
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjIzNTg0MDE0fQ.ahrvmhE76OPhiqQ6TvVU6QNzlSAiKIhLLwANJfIw4Hk'
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjIzNzYyNDk0fQ.giBCkhT-hPwlD6mKNZPiERD_r0zmROs8GJX0xyg3Qm0'
   const getData = async(urll) => {
       const url = `${API_URL}/api/v1/${urll}`;
       const res = await axios({
@@ -36,22 +37,23 @@ export const CalendarMonth = ({date, reminderVisibility, hideReminderCreater, sh
       return await res.data;
       
   }
-  const getBackend = async(id) => {
-    const url = `${API_URL}/api/v1/calendar/month/${id}`;
-    const res = await axios({
-      method: 'get',
-      url: url,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer ' + token
-      }
-    })
-    const result = res.data
-    setBack(result)
-    console.log(res.data);
-    console.log(back);
-    return await res.data
-  }
+  // const getBackend = async(id) => {
+  //   const url = `${API_URL}/api/v1/calendar/month/${id}`;
+  //   const res = await axios({
+  //     method: 'get',
+  //     url: url,
+  //     headers: {
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //       'Authorization': 'Bearer ' + token
+  //     }
+  //   })
+  //   const result = res.data
+  //   setBack(result)
+  //   console.log(res.data);
+  //   console.log(back);
+  //   return await res.data
+  // }
+  console.log(moment().date())
   
 
   useEffect(() => {
@@ -66,7 +68,7 @@ export const CalendarMonth = ({date, reminderVisibility, hideReminderCreater, sh
       );
     }
     setCalendar(temporary);
-    getData('calendar/month')
+    getData(`calendar/month/`)
     
   }, [date]);
 
@@ -100,15 +102,29 @@ export const CalendarMonth = ({date, reminderVisibility, hideReminderCreater, sh
                   }
                 >
                   <span className={date.isSame(day, 'day') ? 'today' : 'day'}>{day.format("D")}</span>
+                  
+                  {backendData.map((end) => 
+                  
+                  
+                  end.start_date.slice(8, 10) === day.format('D', 'day') || end.start_date.slice(9, 10) === day.format('D', 'day') ?
+                    
+                    
+                    <div className="data" key={end.id} onClick={showReminderCreater}>
+                      {end.event.title}
+                    </div> : null
+                    
+                  )}
+                  
                 </div>
+                  
                 
-                  {backendData.map((end) => (
+                  {/* {backendData.map((end) => (
                     
                     <div className={
                       day.day() === 6 || day.day() === 0 ? "weekEndData" : "data"
                     } key={end.id} onClick={showReminderCreater} >
-                      <div className="dataBlock" onClick={() => getBackend(1)}>
-                        <span className="back">{end.event.title}</span>
+                      <div className="dataBlock">
+                        <span className="back">{end.id}</span>
                         
                       </div>
                       
@@ -117,7 +133,7 @@ export const CalendarMonth = ({date, reminderVisibility, hideReminderCreater, sh
                       
                       
                     </div>
-                  ))}
+                  ))} */}
                 
               </div>
             ))}
