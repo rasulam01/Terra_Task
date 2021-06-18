@@ -7,16 +7,16 @@ import Flag from '../../Assets/Flag.png'
 import People from '../../Assets/People.png'
 import Location from '../../Assets/Location.png'
 import Calendar from '../../Assets/Bag.svg'
-import { ContactSupportOutlined } from "@material-ui/icons";
 
-export const CalendarReminderCreater = ({hideReminderCreater}) => {
+
+export const CalendarReminderCreater = ({hideReminderCreater, id}) => {
   const [title, setTitle] = useState("");
   const [back, setBack] = useState([]);
   const setNameTitle = (e) => {
     setTitle(e.target.value);
   };
   const API_URL = 'http://localhost:8000';
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjIzNzYyNDk0fQ.giBCkhT-hPwlD6mKNZPiERD_r0zmROs8GJX0xyg3Qm0'
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0MTI3NTM0fQ.2qreSks7hR6t6601-JaM2YPXdLghbRTSeQR4GZCF8rM'
   const getBackend = async(id) => {
     const url = `${API_URL}/api/v1/calendar/month/${id}`;
     const res = await axios({
@@ -34,8 +34,11 @@ export const CalendarReminderCreater = ({hideReminderCreater}) => {
     return await res.data
   }
   useEffect(() => {
-    getBackend(1)
+    getBackend()
+    
+    
   }, [])
+  
   
  
   return (
@@ -46,26 +49,27 @@ export const CalendarReminderCreater = ({hideReminderCreater}) => {
           type="text"
           name="text"
           placeholder="Цель заметки"
-          value={title}
+          value={id.title}
           onChange={setNameTitle}
         />
       </div>
+      
       <div className="calendarReminderCreaterTypes">
-          <div>Мероприятие</div>
-          <div>Задача</div>
-          <div>Напоминание</div>
+          <div className={id.event.title === 'Мероприятие' ? 'totalTimeSpansSelected' : ''}>Мероприятие</div>
+          <div className={id.event.title === 'Задача' ? 'totalTimeSpansSelected' : ''}>Задача</div>
+          <div className={id.event.title === 'Напоминание' ? 'totalTimeSpansSelected' : ''}>Напоминание</div>
       </div>
       <img src={ClosingIcon} className="calendarReminderCreaterCloser" onClick={hideReminderCreater} alt="shut" />
       
       
       
         <div className="calendarReminderCreaterData" >
-          <div><img src={Clock} alt="time" /><span className="calendarReminderCreaterDataText">время</span></div>
-          <div><img src={Flag} alt="tricolor" /><span className="calendarReminderCreaterDataText">3 раза в неделю</span></div>
-          <div><img src={People} alt="person" /><span className="calendarReminderCreaterDataText">человек</span></div>
-          <div><img src={Location} alt="place" /><span className="calendarReminderCreaterDataText">место</span></div>
-          <div><img src={Calendar} alt="date" /><span className="calendarReminderCreaterDataText">автор</span></div>
-          <div><div className="calendarColorBlock" /><div className="calendarColorText"></div>сфера</div>
+          <div><img src={Clock} alt="time" /></div><span className="calendarReminderCreaterDataText">{id.id}</span>
+          <div><img src={Flag} alt="tricolor" /></div><span className="calendarReminderCreaterDataText">{id.start_date} - {id.end_date}</span>
+          <div><img src={People} alt="person" /></div><span className="calendarReminderCreaterDataText">{id.author}</span>
+          <div><img src={Location} alt="place" /></div><span className="calendarReminderCreaterDataText">{id.place}</span>
+          <div><img src={Calendar} alt="date" /></div><span className="calendarReminderCreaterDataText">{id.author}</span>
+          <div className="calendarColorBlock" /><span className="calendarColorText">Сфера: {id.sphere.title}</span>
       </div>
       
       

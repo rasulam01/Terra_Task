@@ -3,7 +3,7 @@
     width: 80%;
     height: 100vh;
     border-radius: 5px;            
-    top: 15%;
+    top: 20%;
     left: 11%; 
               
 }
@@ -16,19 +16,21 @@
 }
 
 
-.dayWeek, .selectedWeek > *, .currentWeek, .weekEndWeek{
+.dayWeek{
     min-height: 500px;
     min-width: 155px;
-    font-size: 48px;
+    font-size: 14px;
+    
     font-family: 'Lato';
     background: white;
     border-bottom: 1px solid lightgray;
     border-left: 1px solid lightgray;
     border-radius: 5px;            
-    border-collapse: collapse;
-    text-align: center;
+    overflow: hidden;
+    text-align: left;
     
 }
+
 
 .selectedWeek > *{
 
@@ -89,9 +91,15 @@
 .dataWeek{
     width: 100%;
     background: #81FFB3;
-    font-size: 20px;
+    font-size: 10px;
     text-align: left;
     
     
     
+    
+}
+.digit{
+    margin-left: 5%;
+    margin-top: 3%;
+    font-family: 'Lato';
 }

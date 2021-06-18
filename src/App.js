@@ -19,6 +19,7 @@ function App() {
   const [createFormVisibility, setCreateFormVisibility] = useState(false);
   const [date, setDate] = useState(moment());
   const [reminderVisibility, setReminderVisibility] = useState(false);
+  const [adderVisibility, setAdderVisibility] = useState(false)
 
   const showCreateForm = () => {
     setCreateFormVisibility(true);
@@ -37,6 +38,12 @@ function App() {
   const hideReminderCreater = () => {
     setReminderVisibility(false);
   };
+  const showAdder = () => {
+    setAdderVisibility(true)
+  }
+  const hideAdder = () => {
+    setAdderVisibility(false)
+  }
 
   window.moment = moment;
   moment.updateLocale("en", { week: { dow: 1 } });
@@ -53,13 +60,7 @@ function App() {
     setDate(() => date.clone().add(1, "month"));
   };
 
-  const previousWeek = () => {
-    setDate(() => date.clone().subtract(1, "week"));
-  };
   
-  const nextWeek = () => {
-    setDate(() => date.clone().add(1, "week"));
-  };
 
   const calendar = [];
   const day = startingDay.clone();
@@ -91,8 +92,8 @@ function App() {
                 previousMonth={previousMonth}
                 showToday={showToday}
                 nextMonth={nextMonth}
-                showReminderCreater={showReminderCreater}
-                hideReminderCreater={hideReminderCreater}
+                showAdder={showAdder}
+                hideAdder={hideAdder}
               />
             </Route>
           </Switch>
@@ -124,6 +125,10 @@ function App() {
               date={date}
               reminderVisibility={reminderVisibility}
               hideReminderCreater={hideReminderCreater}
+              showReminderCreater={showReminderCreater}
+              adderVisibility={adderVisibility}
+              showAdder={showAdder}
+              hideAdder={hideAdder}
               />
             </Route>
             <Route exact path="/calendarWeek">
@@ -132,6 +137,9 @@ function App() {
                 reminderVisibility={reminderVisibility}
                 hideReminderCreater={hideReminderCreater}
                 showReminderCreater={showReminderCreater}
+                adderVisibility={adderVisibility}
+                showAdder={showAdder}
+                hideAdder={hideAdder}
               />
             </Route>
             <Route exact path="/calendarMonth">
@@ -140,6 +148,9 @@ function App() {
                 reminderVisibility={reminderVisibility}
                 hideReminderCreater={hideReminderCreater}
                 showReminderCreater={showReminderCreater}
+                adderVisibility={adderVisibility}
+                showAdder={showAdder}
+                hideAdder={hideAdder}
               />
             </Route>
           </Switch>

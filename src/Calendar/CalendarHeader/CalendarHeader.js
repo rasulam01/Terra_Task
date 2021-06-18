@@ -11,7 +11,7 @@ import CalendarAdd from '../../Assets/CalendarAdd.png'
 import { useState } from 'react'
 import moment from 'moment'
 
-export const CalendarHeader = ({ sidebarStatusTrue, previousMonth, showToday, nextMonth, showReminderCreater }) => {
+export const CalendarHeader = ({ sidebarStatusTrue, previousMonth, showToday, nextMonth, showAdder }) => {
     
 
     
@@ -26,7 +26,7 @@ export const CalendarHeader = ({ sidebarStatusTrue, previousMonth, showToday, ne
             <div className="totalTimeSpans">
                 <div className="calendarFeatures">
                     <div className="calendarAdd">
-                        <img src={CalendarAdd} alt="Add" onClick={showReminderCreater}/>
+                        <img src={CalendarAdd} alt="Add" onClick={showAdder}/>
                     </div>
                     <div className="calendarSwitchDate">
                         <button onClick={previousMonth}>{'<'}</button>

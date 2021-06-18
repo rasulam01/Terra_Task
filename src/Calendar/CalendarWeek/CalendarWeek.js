@@ -1,70 +1,70 @@
-import './CalendarWeek.css'
-import moment from 'moment'
-import { useState, useEffect } from 'react'
-import { CalendarReminderCreater } from '../CalendarReminderCreater/CalendarReminderCreater'
-import axios from 'axios'
+import "./CalendarWeek.css";
+import moment from "moment";
+import { useState, useEffect } from "react";
+import { CalendarReminderCreater } from "../CalendarReminderCreater/CalendarReminderCreater";
+import axios from "axios";
 
-export const CalendarWeek = ({date, reminderVisibility, hideReminderCreater, showReminderCreater}) => {
-    const [calendar, setCalendar] = useState([])
-    const [value, setValue] = useState(moment())
-    const [backendData, setBackendData] = useState([])
+export const CalendarWeek = ({
+  date,
+  reminderVisibility,
+  hideReminderCreater,
+  showReminderCreater,
+}) => {
+  const [calendar, setCalendar] = useState([]);
+  const [value, setValue] = useState(moment());
+  const [backendData, setBackendData] = useState([]);
+  const [back, setBack] = useState("");
 
-    window.moment = moment
-    moment.updateLocale("en", { week: { dow: 1 } });
-    const startingWeek = value.clone().startOf('week').startOf('day')
-    const endingWeek = value.clone().endOf('week').endOf('day')
+  window.moment = moment;
+  moment.updateLocale("en", { week: { dow: 1 } });
+  const startingWeek = value.clone().startOf("week").startOf("day");
+  const endingWeek = value.clone().endOf("week").endOf("day");
 
-    const API_URL = 'http://localhost:8000';
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjIzNzYyNDk0fQ.giBCkhT-hPwlD6mKNZPiERD_r0zmROs8GJX0xyg3Qm0'
-  const getData = async(urll) => {
-      const url = `${API_URL}/api/v1/${urll}`;
-      const res = await axios({
-          method: 'get',
-          url: url,
-          // data: params,
-          headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'Authorization': 'Bearer ' + token
-          },
-      });
-      const result = res.data
-      setBackendData(result)
-      console.log(res.data);
-      console.log(backendData);
-      return await res.data;
-      
-  }
-    
+  const API_URL = "http://localhost:8000";
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0MTI3NTM0fQ.2qreSks7hR6t6601-JaM2YPXdLghbRTSeQR4GZCF8rM";
+  const getData = async (urll) => {
+    const url = `${API_URL}/api/v1/${urll}`;
+    const res = await axios({
+      method: "get",
+      url: url,
+      // data: params,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Bearer " + token,
+      },
+    });
+    const result = res.data;
+    setBackendData(result);
+    console.log(res.data);
+    console.log(backendData);
+    return await res.data;
+  };
 
-    console.log(startingWeek);
-    console.log(endingWeek);
+  console.log(startingWeek);
+  console.log(endingWeek);
 
-    useEffect(() => {
-      const temporary = []
-      const week = startingWeek.clone().subtract(1, 'day')
-      const endWeek = endingWeek.clone().subtract(1, 'day')
+  useEffect(() => {
+    const temporary = [];
+    const week = startingWeek.clone().subtract(1, "day");
+    const endWeek = endingWeek.clone().subtract(1, "day");
 
     while (week.isBefore(endWeek)) {
-        temporary.push(
-            Array(7)
-            .fill(0)
-            .map(() => week.add(1, 'day').clone())
-        )
-      setCalendar(temporary) 
-      getData('calendar/month/') 
-    }  
-    
-    }, [value])
-    
-    console.log(calendar)
+      temporary.push(
+        Array(7)
+          .fill(0)
+          .map(() => week.add(1, "day").clone())
+      );
+      setCalendar(temporary);
+      getData("calendar/month/");
+    }
+  }, [value]);
 
-    return (
-        <>
+  console.log(calendar);
 
-        <div className="calendarWeek">
-        <div className="calendarDate">
-          {date.format("MMMM")} 
-        </div>
+  return (
+    <>
+      <div className="calendarWeek">
         <div className="calendarMonthDayHeader">
           <div>Понедельник</div>
           <div>Вторник</div>
@@ -77,38 +77,59 @@ export const CalendarWeek = ({date, reminderVisibility, hideReminderCreater, sho
         {calendar.map((week) => (
           <div className="calendarMonthWeek">
             {week.map((day) => (
-              <div
-                className={value.isSame(day, "day") ? "selectedWeek" : "dayWeek"}
-                onClick={() => setValue(day)}
-              >
-                <div
-                  className={
-                    day.day() === 6 || day.day() === 0 ? "weekEndWeek" : ""
-                  }
-                >
-                  <span className={date.isSame(day, 'day') ? 'today' : 'dayWeek'}>{day.format("D")}</span>
-                  {backendData.map((end) => 
-                  
-                  
-                  end.start_date.slice(8, 10) === day.format('D', 'day') || end.start_date.slice(9, 10) === day.format('D', 'day') ?
-                    
-                    
-                    <div className="dataWeek" key={end.id} onClick={showReminderCreater}>
-                      {end.event.title}
-                    </div> : null )}
-                </div>
+              <div className="dayWeek" onClick={() => setValue(day)}>
+                <div className="digit">{day.format("D")}</div>
+
+                {backendData.map((end, i) => {
+                  let getId = () => {
+                    setBack(i);
+                    console.log(end.id);
+                    console.log(back);
+                    console.log(end[i]);
+                    console.log(i);
+                  };
+                  let classes = [];
+                  if (end.sphere.title === "Здоровье и спорт")
+                    classes.push("health");
+                  if (end.sphere.title === "Бизнес и карьера")
+                    classes.push("business");
+                  if (end.sphere.title === "Семья и любовь")
+                    classes.push("family");
+                  if (end.sphere.title === "Личный рост")
+                    classes.push("personal");
+                  if (end.sphere.title === "Инвестиции")
+                    classes.push("finances");
+                  if (end.sphere.title === "Окружение и друзья")
+                    classes.push("friends");
+                  if (end.sphere.title === "Яркость жизни")
+                    classes.push("life");
+                  if (end.sphere.title === "Благотворительность")
+                    classes.push("charity");
+                  return end.start_date.slice(8, 10) ===
+                    day.format("DD", "day") ? (
+                    <div
+                      className={classes.join(" ")}
+                      key={i}
+                      onClick={showReminderCreater}
+                    >
+                      <div onClick={getId}>{end.title}</div>
+                    </div>
+                  ) : null;
+                })}
               </div>
             ))}
-            {reminderVisibility ? (<><CalendarReminderCreater hideReminderCreater={hideReminderCreater} />
-            <div className="cover" onClick={hideReminderCreater}/></>) : null}
+            {reminderVisibility ? (
+              <>
+                <CalendarReminderCreater
+                  hideReminderCreater={hideReminderCreater}
+                  id={backendData[back]}
+                />
+                <div className="cover" onClick={hideReminderCreater} />
+              </>
+            ) : null}
           </div>
-          
         ))}
       </div>
-        
-
-      
-        </>
-        
-    )
-}
+    </>
+  );
+};

@@ -24,11 +24,7 @@
      
 }
 
-.currentDay{
-    background: blue;
-    color: white;   
-    padding: 0;
-}
+
 
 .calendarDayTimeBlock{
     
@@ -46,7 +42,8 @@
 
 .calendarDayTimeBlockData{
     height: calc(100% / 24);    
-    color: brown;    
+    
+    width: 100%;
     transform: translateX(-7%);
     text-align: justify;
     
@@ -57,10 +54,11 @@
 
 .calendarBackendBlockData{
     position: absolute;
-    top: 5%;
-    left: 5%;
-    
+    top: 4.5%;
+    left: 0;
+    width: 100%;                     
 }
-.calendarBackendBlockData span{
-    margin-top: 20px;
-}
+
+
+
+

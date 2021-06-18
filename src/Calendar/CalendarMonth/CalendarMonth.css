@@ -12,7 +12,7 @@
     
     
     z-index: 0;
-    top: 15%;
+    top: 20%;
     left: 11%;
     
     
@@ -36,10 +36,10 @@
     text-align: right;
 }
 
-.day, .selected > *, .current, .weekEndDay{
+.day{
     min-height: 115px;
     min-width: 155px;
-    font-size: 18px;
+    font-size: 14px;
     font-family: 'Lato';
     background: white;
     border-bottom: 1px solid lightgray;
@@ -80,7 +80,7 @@
     line-height: 20px;
     height: 20px;
     width: 100%;
-    top: -30px;
+    top: -45px;
     
 }
 .calendarMonthDayHeader div:nth-child(1) {
@@ -131,19 +131,71 @@
     background: rgba(10, 10, 10, .1);
     border-radius: 0;
 }
-.back{
-    overflow: hidden;
-    
-    font-size: 14px;
+
+
+.finances{
     width: 100%;
-    
+    background: rgba(129, 255, 179, .08);
+    border-right: 5.7px solid rgb(129, 255, 179);
+    text-align: center;                
 }
-.data{
+.friends{
     width: 100%;
-    background: #81FFB3;
-    
-    
-    
+    background: rgba(254, 109, 109, .08);
+    border-right: 5.7px solid rgb(254, 109, 109);
+    text-align: center;            
 }
+
+
+.life{
+    width: 100%;
+    background: rgba(105, 228, 255, .08);
+    border-right: 5.7px solid rgb(105, 228, 255);
+
+    text-align: center;            
+}
+.family{
+    width: 100%;
+    background: rgba(185, 126, 255, .08);
+    border-right: 5.7px solid rgb(185, 126, 255);    
+    text-align: center;            
+}
+.personal{
+    width: 100%;
+    background: rgba(251, 246, 129, .08);
+    border-right: 5.7px solid rgb(251, 246, 129);
+
+    
+    text-align: center;            
+}
+.business{
+    width: 100%;
+    background: rgba(100, 189, 255, .08);
+    border-right: 5.7px solid rgb(100, 189, 255);
+    text-align: center;            
+}
+.health{
+    width: 100%;
+    background: rgba(255, 168, 118, .08);
+    border-right: 5.7px solid rgb(255, 168, 118);
+    text-align: center;            
+}
+.charity{
+    width: 100%;
+    background: rgba(255, 113, 216, .08);
+    border-right: 5.7px solid rgb(255, 113, 216);
+
+    text-align: center;            
+}
+
+
+
+
+.number{
+    margin-left: 10%;
+    margin-top: 4%;
+    font-family: 'Lato';
+}
+
 
 

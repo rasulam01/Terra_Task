@@ -98,8 +98,7 @@
     font-size: 18px;
  
 }
-.calendarReminderCreaterDataText{
-    
+.calendarReminderCreaterDataText input{
+    border: none;
+
 }
-
-
