@@ -29,7 +29,7 @@ export const TotalSidebarClosed = ({ logo, showSidebar }) => {
           <Link to="/calendar"><img src={Bag} alt="Create"/></Link>
         </div>
         <div className="totalSidebarPanelCheck">
-          <img src={Check} alt="Create"/>
+          <Link to="/goals"><img src={Check} alt="Create"/></Link>
         </div>
         <div className="totalSidebarPanelKeylock">
           <img src={Keylock} alt="Create"/>

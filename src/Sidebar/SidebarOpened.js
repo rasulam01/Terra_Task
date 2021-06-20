@@ -31,7 +31,7 @@ export const TotalSidebarOpened = ({ logo, showSidebar }) => {
           <Link to="/calendar"><img src={Bag} alt="Create"/> <span className="description">Календарь</span></Link>
         </div>
         <div className="totalSidebarPanelCheckOpened opened">
-          <img src={Check} alt="Create"/> <span className="description">Мои цели</span>
+          <Link to ="/goals"><img src={Check} alt="Create"/> <span className="description">Мои цели</span></Link>
         </div>
         <div className="totalSidebarPanelKeylockOpened opened">
           <img src={Keylock} alt="Create"/>{" "}

@@ -12,14 +12,16 @@ import moment from "moment";
 import { CalendarHeader } from "./Calendar/CalendarHeader/CalendarHeader";
 import { CalendarWeek } from "./Calendar/CalendarWeek/CalendarWeek";
 import { CalendarDay } from "./Calendar/CalendarDay/CalendarDay";
-import { AnalyticsMonth } from './MainPart/AnalyticsMonth/AnalyticsMonth'
+import { AnalyticsMonth } from "./MainPart/AnalyticsMonth/AnalyticsMonth";
+import { Goals } from "./Goals/Goals/Goals";
+import { GoalsHeader } from "./Goals/GoalsHeader/GoalsHeader";
 
 function App() {
   const [sidebarStatusTrue, setSidebarStatus] = useState(true);
   const [createFormVisibility, setCreateFormVisibility] = useState(false);
   const [date, setDate] = useState(moment());
   const [reminderVisibility, setReminderVisibility] = useState(false);
-  const [adderVisibility, setAdderVisibility] = useState(false)
+  const [adderVisibility, setAdderVisibility] = useState(false);
 
   const showCreateForm = () => {
     setCreateFormVisibility(true);
@@ -39,11 +41,11 @@ function App() {
     setReminderVisibility(false);
   };
   const showAdder = () => {
-    setAdderVisibility(true)
-  }
+    setAdderVisibility(true);
+  };
   const hideAdder = () => {
-    setAdderVisibility(false)
-  }
+    setAdderVisibility(false);
+  };
 
   window.moment = moment;
   moment.updateLocale("en", { week: { dow: 1 } });
@@ -59,8 +61,6 @@ function App() {
   const nextMonth = () => {
     setDate(() => date.clone().add(1, "month"));
   };
-
-  
 
   const calendar = [];
   const day = startingDay.clone();
@@ -96,6 +96,11 @@ function App() {
                 hideAdder={hideAdder}
               />
             </Route>
+            <Route exact path={["/goals", 
+            "/goalsTime", 
+            "/goalsBalance"]}>
+              <GoalsHeader sidebarStatusTrue={sidebarStatusTrue} />
+            </Route>
           </Switch>
         </header>
         <main>
@@ -122,17 +127,17 @@ function App() {
             </Route>
             <Route exact path="/calendarDay">
               <CalendarDay
-              date={date}
-              reminderVisibility={reminderVisibility}
-              hideReminderCreater={hideReminderCreater}
-              showReminderCreater={showReminderCreater}
-              adderVisibility={adderVisibility}
-              showAdder={showAdder}
-              hideAdder={hideAdder}
+                date={date}
+                reminderVisibility={reminderVisibility}
+                hideReminderCreater={hideReminderCreater}
+                showReminderCreater={showReminderCreater}
+                adderVisibility={adderVisibility}
+                showAdder={showAdder}
+                hideAdder={hideAdder}
               />
             </Route>
             <Route exact path="/calendarWeek">
-              <CalendarWeek                
+              <CalendarWeek
                 date={date}
                 reminderVisibility={reminderVisibility}
                 hideReminderCreater={hideReminderCreater}
@@ -143,7 +148,7 @@ function App() {
               />
             </Route>
             <Route exact path="/calendarMonth">
-              <CalendarMonth                
+              <CalendarMonth
                 date={date}
                 reminderVisibility={reminderVisibility}
                 hideReminderCreater={hideReminderCreater}
@@ -153,8 +158,10 @@ function App() {
                 hideAdder={hideAdder}
               />
             </Route>
+            <Route exact path={["/goals", "/goalsTime", "/goalsBalance"]}>
+              <Goals sidebarStatusTrue={sidebarStatusTrue} />
+            </Route>
           </Switch>
-          
         </main>
       </div>
     </BrowserRouter>
