@@ -22,6 +22,7 @@ function App() {
   const [date, setDate] = useState(moment());
   const [reminderVisibility, setReminderVisibility] = useState(false);
   const [adderVisibility, setAdderVisibility] = useState(false);
+  const [goalCreaterVisibility, setGoalCreaterVisibility] = useState(false)
 
   const showCreateForm = () => {
     setCreateFormVisibility(true);
@@ -46,6 +47,12 @@ function App() {
   const hideAdder = () => {
     setAdderVisibility(false);
   };
+  const showGoalCreater = () => {
+    setGoalCreaterVisibility(true)
+  }
+  const hideGoalCreater = () => {
+    setGoalCreaterVisibility(false)
+  }
 
   window.moment = moment;
   moment.updateLocale("en", { week: { dow: 1 } });
@@ -159,7 +166,10 @@ function App() {
               />
             </Route>
             <Route exact path={["/goals", "/goalsTime", "/goalsBalance"]}>
-              <Goals sidebarStatusTrue={sidebarStatusTrue} />
+              <Goals sidebarStatusTrue={sidebarStatusTrue} 
+              goalCreaterVisibility={goalCreaterVisibility}
+              showGoalCreater={showGoalCreater}
+              hideGoalCreater={hideGoalCreater}/>
             </Route>
           </Switch>
         </main>

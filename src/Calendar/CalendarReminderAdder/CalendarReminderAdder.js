@@ -63,7 +63,7 @@ export const CalendarReminderAdder = ({ hideAdder }) => {
       
       console.log(selector.options[selector.selectedIndex].getAttribute('data-key'));
   }
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0MTI3NTM0fQ.2qreSks7hR6t6601-JaM2YPXdLghbRTSeQR4GZCF8rM"
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0NDUyNzI3fQ.XtEzfl4e5rgG-xTWCP3fUnd7XwwahsqwH0Dw4UXFVwE"
   const API_URL = "http://localhost:8000";
 
   const postData = async(data2, urll) => {
@@ -118,11 +118,9 @@ let saveItem = (e) => {
         title: title,
         start_date: dateValue + " " + startTimeValue + ":00",
         end_date: dateValue + " " + endTimeValue + ":00",
-        event: eventSlug,
-        
+        event: eventSlug,        
         place: locationValue,
-        sphere: selector.current.value,
-        
+        sphere: selector.current.value,        
         description: "",
     }
     console.log('-----------------------------------------------------');

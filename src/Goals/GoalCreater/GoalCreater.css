@@ -1,0 +1,160 @@
+.goalCreater{
+    position: fixed;
+    height: 600px;
+    width: 450px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .25);
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.goalCreaterBadges{
+    display: flex;
+    flex-direction: row;
+    margin-top: 27px;
+    float: right;
+    margin-right: 8%;
+    
+}
+.goalCreaterBadges div + div{
+    margin-left: 20px;
+}
+
+
+.goalCreaterInput{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    
+    
+
+}
+.goalCreaterInput input{
+    width: 65%;
+    border: transparent;
+    border-bottom: 1px solid #25315B;
+    font-size: 24px;
+}
+.goalCreaterTextArea textarea{
+    width: 65%;
+    position: absolute;
+    top: 20%;
+    left: 17.5%;
+    height: 116px;
+    background: #F6F5FA;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+    
+
+}
+.goalCreaterTextArea{
+    display: flex;
+    margin-top: 27%;
+    margin-left: 9%;
+}
+.goalCreaterAddAttachment{
+    display: flex;
+    margin-top: 27%;
+    margin-left: 10%;
+    
+}
+.goalCreaterAddTime{
+    display: flex;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+.goalCreaterAddCheckList{
+    display: flex;
+    margin-top: 5%;
+    margin-left: 10%;
+
+}
+.goalCreaterAddAttachment div + div{
+    margin-left: 3%;
+}
+.goalCreaterAddAttachment div:last-child {
+    margin-left: 40%;
+}
+.goalCreaterAddTime div + div{
+    margin-left: 3%;
+}
+.goalCreaterAddCheckList div + div{
+    margin-left: 2.5%;
+}
+.goalCreaterAddCheckList div:last-child {
+    margin-left: 41.25%;
+}
+
+.goalCreaterProgressBar{
+    margin-top: 8px;
+    margin-left: 12.5%;
+    height: 15px;
+    width: 75%;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.goalCreaterProgressBarFiller{
+    height: 100%;
+    width: 100%;
+    
+    border-radius: inherit;
+    background: #6CFFD5;
+    transition: .7s;
+    animation-name: glow;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    
+}
+.goalCreaterCommentary textarea{
+    width: 65%;
+    height: 69px;
+    margin-top: 5%;
+    background: #F6F5FA;
+    border-radius: 5px;
+    border: none;
+    resize: none;
+    outline: none;
+
+}
+
+.goalColorBlock {
+    height: 18px;
+    width: 18px;
+    background: #FF71D8;
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.goalColorText{
+    position: absolute;
+    left: 18%;
+    margin-top: -18px;
+
+   
+    
+}
+.goalColorSelect{
+    transform: translate(10%, -90%);
+}
+.saveButton{
+    width: 132px;
+    height: 46px;
+    border-radius: 5px;
+    border: none;
+    background: #3175D6;
+    font-size: 18px;
+    color: white;
+    transform: translate(110%, -10%);
+}
+
+
+

@@ -26,7 +26,7 @@ export const CalendarMonth = ({
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0MTI3NTM0fQ.2qreSks7hR6t6601-JaM2YPXdLghbRTSeQR4GZCF8rM";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0NDUyNzI3fQ.XtEzfl4e5rgG-xTWCP3fUnd7XwwahsqwH0Dw4UXFVwE";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -41,7 +41,7 @@ export const CalendarMonth = ({
     const result = res.data;
     setBackendData(result);
     console.log(res.data);
-    console.log(backendData);
+    
     return await res.data;
   };
 
