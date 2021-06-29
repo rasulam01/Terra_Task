@@ -63,7 +63,7 @@ export const CalendarReminderAdder = ({ hideAdder }) => {
       
       console.log(selector.options[selector.selectedIndex].getAttribute('data-key'));
   }
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0NDUyNzI3fQ.XtEzfl4e5rgG-xTWCP3fUnd7XwwahsqwH0Dw4UXFVwE"
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w"
   const API_URL = "http://localhost:8000";
 
   const postData = async(data2, urll) => {

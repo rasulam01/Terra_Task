@@ -8,8 +8,10 @@
     height: 630px;
     border-radius: 15px;            
     top: 35%;
-    left: 21%; 
+    left: 19%; 
     background: white;
+    overflow-x: scroll;
+    border-radius: 15px;
     
     
 }
@@ -50,9 +52,30 @@
     
 }
 
-.goalsCategories div + div{
-    /* margin-left: 95px; */
-
+.goalsBalanceWheel{
+    position: absolute;
+    border-radius: 15px;
+    width: 262px;
+    height: 273px;
+    background: white;
+    top: 65%;
+    right: 7%;            
+}
+.goalsBalanceWheelOpened{
+    position: absolute;
+    border-radius: 15px;
+    width: 262px;
+    height: 273px;
+    background: white;
+    top: 65%;
+    right: 0;            
+}
+.goalsBalanceWheelTitle{
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    margin-top: 10%;
+    margin-right: 20%;
 }
 .goalsCategories div{
     width: 262px;
@@ -73,8 +96,204 @@
     border-top: 4.3px solid rgb(105, 228, 255);
     
 }
+.brightness{
+    text-align: justify;
+    
+    background:rgba(105, 228, 255, .08);
+    border-top: 4.3px solid rgb(105, 228, 255);
+    
+}
+.career{
+    text-align: justify;
+    
+    background:rgba(100, 189, 255, .08);
+    border-top: 4.3px solid rgb(100, 189, 255);
+}
+.sport{
+    text-align: justify;
+    
+    background:rgba(255, 168, 118, .08);
+    border-top: 4.3px solid rgb(255, 168, 118);
+}
+.investment{
+    text-align: justify;
+    
+    background:rgba(129, 255, 179, .08);
+    border-top: 4.3px solid rgb(129, 255, 179);
+}
+.sweetheart{
+    text-align: justify;
+    
+    
+    background:rgba(255, 113, 216, .08);
+    border-top: 4.3px solid rgb(255, 113, 216);
+}
+.growth{
+    text-align: justify;
+    
+    background:rgba(251, 246, 129, .08);
+    border-top: 4.3px solid rgb(251, 246, 129);
+}
+.environment{
+    text-align: justify;
+    
+    background:rgba(254, 109, 109, .08);
+    border-top: 4.3px solid rgb(254, 109, 109);
+}
+.love{
+    text-align: justify;
+    
+    background:rgba(185, 126, 255, .08); 
+    border-top: 4.3px solid rgb(185, 126, 255); 
+}
+
+.giveaway{
+    background:rgba(255, 113, 216, .08);    
+    text-align: left;
+    border-radius: 5px;
+    transform: translateY(-60%);
+}
+.light{
+    background:rgba(105, 228, 255, .08);
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+    
+}
+.attachment{
+    background:rgba(185, 126, 255, .08); 
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+}
+.surroundings{
+    background:rgba(254, 109, 109, .08);
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+}
+.corporate{
+    background:rgba(129, 255, 179, .08);
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+    
+}
+
+.money{
+    background:rgba(100, 189, 255, .08);
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+}
+.wellness{
+    background:rgba(255, 168, 118, .08);
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+}
+.benevolence{
+    background:rgba(255, 113, 216, .08);    
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+}
+
 .goalsCategoryDateBrightness{
     background:rgba(105, 228, 255, .08);
+    text-align: left;
+    
+    border-radius: 5px;
+}
+.goalsCategoryDataLove{
+    text-align: justify;
+    
+    background:rgba(185, 126, 255, .08); 
+    border-top: 4.3px solid rgb(185, 126, 255); 
+    
+}
+.goalsCategoryDateLove{
+    background:rgba(185, 126, 255, .08); 
+    text-align: left;
+    
+    border-radius: 5px;
+}
+.goalsCategoryDataEnvironment{
+    text-align: justify;
+    
+    background:rgba(254, 109, 109, .08);
+    border-top: 4.3px solid rgb(254, 109, 109);
+    
+}
+.goalsCategoryDateEnvironment{
+    background:rgba(254, 109, 109, .08);
+    text-align: left;
+    
+    border-radius: 5px;
+}
+.goalsCategoryDataInvestment{
+    text-align: justify;
+    
+    background:rgba(129, 255, 179, .08);
+    border-top: 4.3px solid rgb(129, 255, 179);
+    
+}
+.goalsCategoryDateInvestment{
+    background:rgba(129, 255, 179, .08);
+    text-align: left;
+    
+    border-radius: 5px;
+}
+.goalsCategoryDataGrowth{
+    text-align: justify;
+    
+    background:rgba(251, 246, 129, .08);
+    border-top: 4.3px solid rgb(251, 246, 129);
+    
+}
+.goalsCategoryDateGrowth{
+    background:rgba(251, 246, 129, .08);
+    text-align: left;
+    
+    border-radius: 5px;
+}
+.goalsCategoryDataCareer{
+    text-align: justify;
+    
+    background:rgba(100, 189, 255, .08);
+    border-top: 4.3px solid rgb(100, 189, 255);
+    
+}
+.goalsCategoryDateCareer{
+    background:rgba(100, 189, 255, .08);
+    text-align: left;
+    
+    border-radius: 5px;
+}
+.goalsCategoryDataSport{
+    text-align: justify;
+    
+    background:rgba(255, 168, 118, .08);
+    border-top: 4.3px solid rgb(255, 168, 118);
+    
+}
+.goalsCategoryDateSport{
+    background:rgba(255, 168, 118, .08);
+    text-align: left;
+    
+    border-radius: 5px;
+}
+.goalsCategoryDataCharity{
+    text-align: justify;
+    
+    
+    background:rgba(255, 113, 216, .08);
+    border-top: 4.3px solid rgb(255, 113, 216);
+    
+}
+.goalsCategoryDateCharity{
+    background:rgba(255, 113, 216, .08);
+    
     text-align: left;
     
     border-radius: 5px;
@@ -91,11 +310,7 @@ div img{
     cursor: pointer;
 }
 
-.brightness{
-    background: rgba(105, 228, 255, .08);
-    border-top: 4.3px solid rgb(105, 228, 255);
-    
-}
+
 
 
 

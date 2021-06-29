@@ -2,11 +2,14 @@ import moment from "moment";
 import "./CalendarDay.css";
 import { useState, useEffect } from "react";
 import { CalendarReminderCreater } from "../CalendarReminderCreater/CalendarReminderCreater";
+import { CalendarReminderAdder } from '../CalendarReminderAdder/CalendarReminderAdder'
 import axios from "axios";
 
 export const CalendarDay = ({
   date,
   reminderVisibility,
+  adderVisibility,  
+  hideAdder,
   hideReminderCreater,
   showReminderCreater,
 }) => {
@@ -14,13 +17,14 @@ export const CalendarDay = ({
   const [value, setValue] = useState(moment());
   const [backendData, setBackendData] = useState([]);
   const [back, setBack] = useState('')
+  
 
   window.moment = moment;
   moment.updateLocale("en", { week: { dow: 1 } });
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0NDUyNzI3fQ.XtEzfl4e5rgG-xTWCP3fUnd7XwwahsqwH0Dw4UXFVwE";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -60,7 +64,10 @@ export const CalendarDay = ({
   console.log(calendar);
   console.log(calendar.map((week) => week.map((day) => day.format("HH:mm"))));
   console.log(backendData);
-
+  const getClientY = (e) => {
+    console.log(e.clientY);
+  }
+  
   return (
     <div className="calendarDay">
       <div className="calendarDayDate">
@@ -69,9 +76,9 @@ export const CalendarDay = ({
       </div>
 
       <div className="calendarDayTimeBlock">
-        {calendar.map((week) =>
+        {calendar.map((week, i) =>
           week.map((day) => (
-            <span className="calendarDayTimeBlockData">
+            <span className="calendarDayTimeBlockData" onClick={getClientY}>
               {day.format("HH:mm")}
             </span>
           ))
@@ -85,7 +92,40 @@ export const CalendarDay = ({
               console.log(end[i]);
               console.log(i);
             };
+            let getTimeSlice = (e) => {
+              console.log(end.start_date.slice(11, 16));
+              
+            }
+            
+            let timeSpan = end.start_date.slice(11, 16);
+            let vertical
             let classes = [];
+            if (timeSpan === '00:00') vertical = 20
+            if (timeSpan === '01:00') vertical = 50
+            if (timeSpan === '02:00') vertical = 80
+            if (timeSpan === '03:00') vertical = 110
+            if (timeSpan === '04:00') vertical = 140
+            if (timeSpan === '05:00') vertical = 170
+            if (timeSpan === '06:00') vertical = 200
+            if (timeSpan === '07:00') vertical = 230
+            if (timeSpan === '08:00') vertical = 260
+            if (timeSpan === '09:00') vertical = 290
+            if (timeSpan === '10:00') vertical = 320
+            if (timeSpan === '11:00') vertical = 350
+            if (timeSpan === '12:00') vertical = 380
+            if (timeSpan === '13:00') vertical = 410
+            if (timeSpan === '14:00') vertical = 440
+            if (timeSpan === '15:00') vertical = 470
+            if (timeSpan === '16:00') vertical = 500
+            if (timeSpan === '17:00') vertical = 530
+            if (timeSpan === '18:00') vertical = 560
+            if (timeSpan === '19:00') vertical = 590
+            if (timeSpan === '20:00') vertical = 620
+            if (timeSpan === '21:00') vertical = 650
+            if (timeSpan === '22:00') vertical = 680
+            if (timeSpan === '23:00') vertical = 710
+            
+            
             if (end.sphere.title === "Здоровье и спорт") classes.push("health");
             if (end.sphere.title === "Бизнес и карьера")
               classes.push("business");
@@ -98,7 +138,7 @@ export const CalendarDay = ({
             if (end.sphere.title === "Благотворительность") classes.push("charity");
              return ( 
             end.start_date.slice(8, 10) === date.format("DD", "day") ? (
-              <div key={i} onClick={showReminderCreater} className={classes.join(" ")}>
+              <div key={i} onClick={showReminderCreater} onClick={getTimeSlice} className={classes.join(" ")} style={{ marginTop: end.start_date.slice(11, 16) === timeSpan ? vertical + 'px' : ''}}>
                 <div onClick={getId}>{end.title}</div>
               </div>
             ) : null);
@@ -112,6 +152,16 @@ export const CalendarDay = ({
           <div className="cover" onClick={hideReminderCreater} />
         </>
       ) : null}
+      {adderVisibility ? (
+              <>
+                <CalendarReminderAdder
+                hideAdder={hideAdder}
+                />
+                <div className="cover"
+                onClick={hideAdder}
+                />
+              </>
+            ) : null}
     </div>
   );
 };

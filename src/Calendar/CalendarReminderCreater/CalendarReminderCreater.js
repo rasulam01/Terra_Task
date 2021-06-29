@@ -17,7 +17,7 @@ export const CalendarReminderCreater = ({hideReminderCreater, id}) => {
     setTitle(e.target.value);
   };
   const API_URL = 'http://localhost:8000';
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0NDUyNzI3fQ.XtEzfl4e5rgG-xTWCP3fUnd7XwwahsqwH0Dw4UXFVwE'
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w'
   const getBackend = async(id) => {
     const url = `${API_URL}/api/v1/calendar/month/${id}`;
     const res = await axios({

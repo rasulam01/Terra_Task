@@ -2,11 +2,14 @@ import "./CalendarWeek.css";
 import moment from "moment";
 import { useState, useEffect } from "react";
 import { CalendarReminderCreater } from "../CalendarReminderCreater/CalendarReminderCreater";
+import { CalendarReminderAdder } from '../CalendarReminderAdder/CalendarReminderAdder'
 import axios from "axios";
 
 export const CalendarWeek = ({
   date,
   reminderVisibility,
+  adderVisibility,  
+  hideAdder,
   hideReminderCreater,
   showReminderCreater,
 }) => {
@@ -22,7 +25,7 @@ export const CalendarWeek = ({
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0NDUyNzI3fQ.XtEzfl4e5rgG-xTWCP3fUnd7XwwahsqwH0Dw4UXFVwE";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -58,6 +61,7 @@ export const CalendarWeek = ({
       setCalendar(temporary);
       getData("calendar/month/");
     }
+    
   }, [value]);
 
   console.log(calendar);
@@ -125,6 +129,16 @@ export const CalendarWeek = ({
                   id={backendData[back]}
                 />
                 <div className="cover" onClick={hideReminderCreater} />
+              </>
+            ) : null}
+            {adderVisibility ? (
+              <>
+                <CalendarReminderAdder
+                hideAdder={hideAdder}
+                />
+                <div className="cover"
+                onClick={hideAdder}
+                />
               </>
             ) : null}
           </div>

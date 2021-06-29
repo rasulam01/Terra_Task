@@ -39,7 +39,7 @@ export const GoalCreater = ({ hideGoalCreater }) => {
       setIsFavourite(!isFavourite)
   }
   
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0NDUyNzI3fQ.XtEzfl4e5rgG-xTWCP3fUnd7XwwahsqwH0Dw4UXFVwE"
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w"
   const API_URL = "http://localhost:8000";
   const postData = async(data2, urll) => {
     const formData = new FormData();
@@ -68,17 +68,17 @@ const createGoal = () => {
     const object = {
         text: goalName,
         description: descriptionContent,
-        date: dateValue.slice(8, 10) + "." + dateValue.slice(5, 7),
+        date: dateValue,
         comment: commentaryContent,
-        sphere: selector.current.value,
-        image: image,
+        sphere: {slug: selector.current.value},
+        // image: image,
         done: isDone,
-        favourite: isFavourite
+        favorite: isFavourite
         
     }
     console.log(selector.current.value);
     console.log(object);
-    postData('goals/goals/')
+    postData(object, 'goals/goals/')
 }
 const selector = React.createRef()
 
