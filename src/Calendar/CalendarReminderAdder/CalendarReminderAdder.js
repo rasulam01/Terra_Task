@@ -1,5 +1,6 @@
 import "./CalendarReminderAdder.css";
 import React, { useState, useEffect } from "react";
+import { NavLink, Link } from 'react-router-dom'
 import axios from "axios";
 import ClosingIcon from "../../Assets/Closer.png";
 import Clock from "../../Assets/Clock.png";
@@ -8,7 +9,8 @@ import People from "../../Assets/People.png";
 import Location from "../../Assets/Location.png";
 import Calendar from "../../Assets/Bag.svg";
 
-export const CalendarReminderAdder = ({ hideAdder }) => {
+
+export const CalendarReminderAdder = ({ hideAdder, hyper }) => {
   const [backendData, setBackendData] = useState([])
   const [title, setTitle] = useState("");
   const [dateValue, setDateValue] = useState('')
@@ -25,28 +27,132 @@ export const CalendarReminderAdder = ({ hideAdder }) => {
   const [eventName, setEventName] = useState("")
   const [sphereId, setSphereId] = useState("")
   const [sphereTitle, setSphereTitle] = useState("")
+  const [titleIsValid, setTitleIsValid] = useState(false)
+  const [startDateIsValid, setStartDateIsValid] = useState(false)
+  const [endDateIsValid, setEndDateIsValid] = useState(false)
+  const [eventIsValid, setEventIsValid] = useState(false)
+  const [placeIsValid, setPlaceIsValid] = useState(false)
+  const [valid, setValid] = useState(false)
+  const [colorBlockClass, setColorBlockClass] = useState("")
+  let validOverall = false
+  let validTitle = false
+  let validDate = false
+    let validStart = false
+    let validEnd = false
+    let validEvent = false
+    let validPlace = false
+
+  
   const setNameTitle = (e) => {
     setTitle(e.target.value);
+    // if (title.length === 0) {
+    //   validTitle = false
+    // } else {
+    //   validTitle = true
+    // }
   };
   const setDate = (e) => {
       setDateValue(e.target.value)
   }
   const setStartTime = (e) => {
     setStartTimeValue(e.target.value);
+    // if (startTimeValue === null || startTimeValue === undefined) {
+    //   validStart = false
+    // } else {
+    //   validStart = true
+    // }
   };
   const setEndTime = (e) => {
     setEndTimeValue(e.target.value);
+    // if (endTimeValue === null || endTimeValue === undefined) {
+    //   validEnd = false
+    // } else {
+    //   validEnd = true
+    // }
   };
   const setAuthorName = (e) => {
     setAuthor(e.target.value);
   };
   const setLocation = (e) => {
     setLocationValue(e.target.value);
+    // if (locationValue.length === 0) {
+    //   validPlace = false
+    // } else {
+    //   validPlace = true
+    // }
   };
+  if (title.length === 0) {
+    validTitle = false
+  } else {
+    validTitle = true
+  }
+  if (dateValue === null || dateValue === undefined || dateValue.length === 0) {
+    validDate = false
+  } else {
+    validDate = true
+  }
+  if (startTimeValue === null || startTimeValue === undefined || startTimeValue.length === 0) {
+    validStart = false
+  } else {
+    validStart = true
+  }
+  if (endTimeValue === null || endTimeValue === undefined || endTimeValue.length === 0) {
+    validEnd = false
+  } else {
+    validEnd = true
+  }
+  if (eventName === undefined || eventName === null || eventName.length === 0) {
+        validEvent = false
+      } else {
+        validEvent = true
+      }
+  if (locationValue.length === 0) {
+    validPlace = false
+  } else {
+    validPlace = true
+  }
+  
+  if (validTitle && validStart && validEnd && validEvent && validPlace) {
+    validOverall = true
+  } else {
+    validOverall = false
+  }
+  const validation = () => {
+    console.log(validTitle, validDate, validStart, validEnd, validEvent, validPlace, validOverall);
+    // if (validTitle && validStart && validEnd && validEvent && validPlace) {
+    //   validOverall = true
+    // } else {
+    //   validOverall = false
+    // }
+  }
+  const getCurrentValue = () => {
+    console.log(selector.current.value);
+    console.log(colorBlockClass);
+    if (selector.current.value === 'brightness_of_life') {
+      setColorBlockClass('bright')
+    } else if (selector.current.value === 'family_and_love') {
+      setColorBlockClass('gathering')
+    } else if (selector.current.value === 'personal_growth') {
+      setColorBlockClass('self')
+    } else if (selector.current.value === 'investment') {
+      setColorBlockClass('longterm')
+    } else if (selector.current.value === 'environment_and_friends') {
+    setColorBlockClass('nature')
+    } else if (selector.current.value === 'business_and_career') {
+      setColorBlockClass('deal') 
+    } else if (selector.current.value === 'health_and_sports') {
+      setColorBlockClass('extreme')
+    } else if (selector.current.value === 'charity') {
+      setColorBlockClass('gratitude')
+    }
+  }
+
+  
   const setPerson = (e) => {
     setPersonValue(e.target.value);
   };
   const eventKey = (e) => {
+      
       console.log(e.target.id);
       setEventId(e.target.id)
       setEventName(e.target.textContent)
@@ -55,6 +161,7 @@ export const CalendarReminderAdder = ({ hideAdder }) => {
       console.log(e.target.textContent);
       console.log(events);
       console.log(e.target.getAttribute('id'));
+      
 
       
   }
@@ -63,7 +170,7 @@ export const CalendarReminderAdder = ({ hideAdder }) => {
       
       console.log(selector.options[selector.selectedIndex].getAttribute('data-key'));
   }
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w"
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA"
   const API_URL = "http://localhost:8000";
 
   const postData = async(data2, urll) => {
@@ -88,6 +195,18 @@ export const CalendarReminderAdder = ({ hideAdder }) => {
         body: JSON.stringify(data2),
         })
         .then(response => response.json())
+        .then(() => {
+          const tempo = [...backendData]
+          tempo.push(data2)
+          setBackendData(tempo)
+          
+          console.log(backendData);
+          console.log(tempo);
+          
+        })
+        getData('calendar/month/')
+        
+    
 }
 
 const getData = async (urll) => {
@@ -103,14 +222,17 @@ const getData = async (urll) => {
     });
     const result = res.data;
     setBackendData(result);
-    console.log(res.data);
     
+        
     return await res.data;
   };
 
   useEffect(() => {
       getData('calendar/month/')
-  }, [])
+      
+      
+      
+  }, [valid])
 
 let selector = React.createRef()
 let saveItem = (e) => {
@@ -123,32 +245,105 @@ let saveItem = (e) => {
         sphere: selector.current.value,        
         description: "",
     }
+    // let validTitle = false
+    // let validStart = false
+    // let validEnd = false
+    // let validEvent = false
+    // let validPlace = false
+    // let validOverall = false
+    if (object.title.length === 0) {
+      validTitle = false
+
+    } else {
+      validTitle = true
+    }
+
+    if (object.start_date === undefined || object.start_date === null || object.start_date === ' :00' || object.start_date.length < 17) {
+      validStart = false
+    } else {
+      validStart = true
+    }
+
+    if (object.end_date === undefined || object.end_date === null || object.end_date === ' :00' || object.end_date.length < 17) {
+      validEnd = false
+    } else {
+      validEnd = true
+    }
+
+    if (object.event === undefined || object.event === null || object.event.length === 0) {
+      validEvent = false
+    } else {
+      validEvent = true
+    }
+
+    if (object.place.length === 0 || object.place === undefined || object.place === null && placeIsValid) {
+      validPlace = false
+    } else {
+      validPlace = true
+    }
+    
+    if (validTitle && validStart && validEnd && validEvent && validPlace) {
+      validOverall = true
+    } else {
+      validOverall = false
+    }
+    console.log(validTitle, validStart, validEnd, validEvent, validPlace, validOverall);
+
+    
+
+    console.log('1:', titleIsValid,'2:', startDateIsValid,'3:', endDateIsValid,'4:', eventIsValid,'5:', placeIsValid,'6:', valid);
+    console.log(typeof(titleIsValid, startDateIsValid, endDateIsValid, eventIsValid, placeIsValid));
+
+    
+
+    
     console.log('-----------------------------------------------------');
     console.log(object);
     console.log('-----------------------------------------------------');
-    setSphereId(selector.current.selectedIndex + 1)
+    setSphereId(selector.current.selectedIndex)
     setSphereTitle(selector.current[selector.current.selectedIndex].text)
     console.log(selector.current.value);
     
-    // console.log(selector.options[selector.current.selectedIndex]);
+    
+  
+    
     console.log(selector.current.selectedIndex.textContent);
     console.log(selector.current.selectedIndex);
     console.log(selector.current[selector.current.selectedIndex].text)
+    
     
     
     console.log(dateValue + " " + startTimeValue);
     console.log(endTimeValue);
     console.log(dateValue + " " + endTimeValue );
     console.log(object);
-    postData(object, `calendar/month/`)
     
     
+      
+    if (validOverall) {
+      postData(object, `calendar/month/`)
+      getData('calendar/month/')
+      
+      
+      
+      
+      
+      
+    } else {
+      e.preventDefault()
+      alert('The form is not fully complete!')
+    }
+    
+    
+    
+    
+    getData('calendar/month/')
 }
 
 
   return (
     <>
-      <div className="calendarReminderCreater">
+      <div className="calendarReminderCreater" style={{ border: validOverall ? '2px solid green' : '2px solid red'}} onChange={validation}>
         <div className="calendarReminderCreaterVisit">
           <input
             type="text"
@@ -156,13 +351,14 @@ let saveItem = (e) => {
             placeholder="Цель заметки"
             value={title}
             onChange={setNameTitle}
+            
           />
         </div>
 
         <div className="calendarReminderCreaterTypes">
-          <div id="1" value="event" onClick={eventKey}>Мероприятие</div>
-          <div id="2" value="task" onClick={eventKey}>Задача</div>
-          <div id="3" value="reminder" onClick={eventKey}>Напоминание</div>
+          <div id="1" value="event" onClick={eventKey} className={eventId === '1' ? 'totalTimeSpansSelected' : ''}>Мероприятие</div>
+          <div id="2" value="task" onClick={eventKey} className={eventId === '2' ? 'totalTimeSpansSelected' : ''}>Задача</div>
+          <div id="3" value="reminder" onClick={eventKey} className={eventId === '3' ? 'totalTimeSpansSelected' : ''}>Напоминание</div>
         </div>
         <img
           src={ClosingIcon}
@@ -190,7 +386,7 @@ let saveItem = (e) => {
               value={startTimeValue}
               onChange={setStartTime}
             />
-            {"-"}
+            {" "}
             <input
             type="time"
             name="text"
@@ -247,16 +443,17 @@ let saveItem = (e) => {
               onChange={setPerson}
             />
           </span>
-          <div className="calendarColorBlock" />
-          <span className="calendarColorText">Сфера: <select ref={selector}>
-             <option value="health_and_sport" data-key='1' onClick={sphereKey}>Здоровье и спорт</option> 
-             <option value="business_and_career" data-key="2" onClick={sphereKey}>Бизнес и карьера</option>
-             <option value="family_and_love" data-key="3" onClick={sphereKey}>Семья и любовь</option>
-             <option value="personal_growth" data-key="4" onClick={sphereKey}>Личностный рост</option>
-             <option value="investment" data-key="5" onClick={sphereKey}>Инвестиции</option>
-             <option value="environment_and_friends" data-key="6" onClick={sphereKey}>Окружение и друзья</option>
-             <option value="brightness_of_life" data-key="7" onClick={sphereKey}>Яркость жизни</option>
-             <option value="charity" data-key="8" onClick={sphereKey}>Благотворительность</option></select></span>
+          <div className={colorBlockClass} />
+          <span className="calendarColorText">Сфера: <select ref={selector} onChange={getCurrentValue}>
+             <option value="" selected disabled hidden>Выбрать опцию</option>                        
+             <option value="health_and_sports" onClick={sphereKey}>Здоровье и спорт</option> 
+             <option value="business_and_career" onClick={sphereKey}>Бизнес и карьера</option>
+             <option value="family_and_love" onClick={sphereKey}>Семья и любовь</option>
+             <option value="personal_growth" onClick={sphereKey}>Личностный рост</option>
+             <option value="investment" onClick={sphereKey}>Инвестиции</option>
+             <option value="environment_and_friends" onClick={sphereKey}>Окружение и друзья</option>
+             <option value="brightness_of_life" onClick={sphereKey}>Яркость жизни</option>
+             <option value="charity" onClick={sphereKey}>Благотворительность</option></select></span>
         </div>
 
         <div className="calendarReminderCreaterButtons">
@@ -267,8 +464,10 @@ let saveItem = (e) => {
             Отложить
           </button>
           <button
+            
             className="calendarReminderCreaterDoneButton"
-            onClick={hideAdder}
+            
+            
             onClick={saveItem}
             
           >

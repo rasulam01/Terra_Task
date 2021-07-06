@@ -22,16 +22,16 @@ export const TotalSidebarOpened = ({ logo, showSidebar }) => {
           </span>
         </div>
         <div className="totalSidebarPanelHomeOpened opened">
-          <Link to="/"><img src={Home} alt="Create"/> <span className="description">Колесо баланса</span></Link>
+          <Link to="/week"><img src={Home} alt="Create"/> <span className="description">Колесо баланса</span></Link>
         </div>
         <div className="totalSidebarPanelListOpened opened">
           <img src={List} alt="Create"/> <span className="description">Дневник</span>
         </div>
         <div className="totalSidebarPanelBagOpened opened">
-          <Link to="/calendar"><img src={Bag} alt="Create"/> <span className="description">Календарь</span></Link>
+          <Link to="/calendarMonth"><img src={Bag} alt="Create"/> <span className="description">Календарь</span></Link>
         </div>
         <div className="totalSidebarPanelCheckOpened opened">
-          <Link to ="/goals"><img src={Check} alt="Create"/> <span className="description">Мои цели</span></Link>
+          <Link to ="/goalsTime"><img src={Check} alt="Create"/> <span className="description">Мои цели</span></Link>
         </div>
         <div className="totalSidebarPanelKeylockOpened opened">
           <img src={Keylock} alt="Create"/>{" "}

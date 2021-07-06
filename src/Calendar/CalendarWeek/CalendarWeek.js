@@ -10,6 +10,7 @@ export const CalendarWeek = ({
   reminderVisibility,
   adderVisibility,  
   hideAdder,
+  hyper,
   hideReminderCreater,
   showReminderCreater,
 }) => {
@@ -25,7 +26,7 @@ export const CalendarWeek = ({
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -39,18 +40,19 @@ export const CalendarWeek = ({
     });
     const result = res.data;
     setBackendData(result);
-    console.log(res.data);
-    console.log(backendData);
+    
     return await res.data;
   };
+  
 
-  console.log(startingWeek);
-  console.log(endingWeek);
+  
 
   useEffect(() => {
     const temporary = [];
     const week = startingWeek.clone().subtract(1, "day");
     const endWeek = endingWeek.clone().subtract(1, "day");
+    const hour = value.clone().startOf('day').subtract(1, 'hour')
+    const endHour = value.clone().endOf('day').subtract(1, 'hour')
 
     while (week.isBefore(endWeek)) {
       temporary.push(
@@ -64,7 +66,7 @@ export const CalendarWeek = ({
     
   }, [value]);
 
-  console.log(calendar);
+  
 
   return (
     <>
@@ -78,9 +80,10 @@ export const CalendarWeek = ({
           <div>Суббота</div>
           <div>Воскресенье</div>
         </div>
-        {calendar.map((week) => (
+        {calendar.map((week, i) => (
           <div className="calendarMonthWeek">
-            {week.map((day) => (
+            {week.map((day, i) => (
+              
               <div className="dayWeek" onClick={() => setValue(day)}>
                 <div className="digit">{day.format("D")}</div>
 
@@ -135,6 +138,7 @@ export const CalendarWeek = ({
               <>
                 <CalendarReminderAdder
                 hideAdder={hideAdder}
+                hyper="/calendarWeek"
                 />
                 <div className="cover"
                 onClick={hideAdder}

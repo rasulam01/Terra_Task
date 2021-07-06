@@ -11,6 +11,7 @@
     left: 19%; 
     background: white;
     overflow-x: scroll;
+    
     border-radius: 15px;
     
     
@@ -27,17 +28,122 @@
     overflow-x: scroll;
     
 }
+.goalsMission{
+    position: absolute;
+    width: 826px;
+    height: 60px;
+    background: white;
+    top: 22%;
+    left: 11%;
+    border-radius: 15px;
+}
+.goalsMissionOpened{
+    position: absolute;
+    width: 826px;
+    height: 60px;
+    background: white;
+    top: 22%;
+    left: 19%;
+    border-radius: 15px;
+}
+.goalsMissionTitle{
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-left: 6%;
+    float: left;
+}
+.goalsMissionDescription{
+    margin-top: 17.5px;
+    float: left;
+    margin-left: 3%;
+}
+.goalsGoalsAchieved{
+    position: absolute;
+    border-radius: 15px;
+    width: 262px;
+    height: 216px;
+    background: white;
+    top: 22%;
+    right: 7%; 
+}
+.goalsGoalsAchievedOpened{
+    position: absolute;
+    border-radius: 15px;
+    width: 262px;
+    height: 216px;
+    background: white;
+    top: 22%;
+    right: 0; 
+}
+.goalsGoalsAchievedTitle{
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-left: 10%;
+    float: left;
+}
+
+.goalsGoalsInFocus{
+    position: absolute;
+    border-radius: 15px;
+    width: 262px;
+    height: 185px;
+    background: white;
+    top: 106%;
+    right: 7%; 
+}
+.goalsGoalsInFocusOpened{
+    position: absolute;
+    border-radius: 15px;
+    width: 262px;
+    height: 185px;
+    background: white;
+    top: 106%;
+    right: 0%; 
+}
+.goalsGoalsInFocusTitle{
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-left: 8%;
+    float: left;
+}
 
 .goalsSections{
-    display: flex;
+    display: flex;    
     flex-direction: row;
     margin-left: 5%;
     margin-top: 3%;
     
+    
+    
+    
 }
-.goalsSections div{
-    padding: 9px;
+
+
+
+.lol{
+    
+    display: flex;
+    
+    
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    left: 14.5%;
+    width: 120px;
+    justify-content: space-between;
+    
+
+    
 }
+
+
+
+
+
+
 .goalsCategories{
     display: flex;
     text-align: center;
@@ -46,6 +152,7 @@
     line-height: 25px;    
     letter-spacing: .3px;
     white-space: nowrap;
+    margin-top: 50px;
     
     
     
@@ -58,7 +165,7 @@
     width: 262px;
     height: 273px;
     background: white;
-    top: 65%;
+    top: 60%;
     right: 7%;            
 }
 .goalsBalanceWheelOpened{
@@ -67,14 +174,15 @@
     width: 262px;
     height: 273px;
     background: white;
-    top: 65%;
+    top: 60%;
     right: 0;            
 }
 .goalsBalanceWheelTitle{
     font-size: 21px;
     font-weight: 600;
     letter-spacing: .3px;
-    margin-top: 10%;
+    
+    padding: 15px;
     margin-right: 20%;
 }
 .goalsCategories div{
@@ -133,6 +241,13 @@
     
     background:rgba(251, 246, 129, .08);
     border-top: 4.3px solid rgb(251, 246, 129);
+}
+.development{
+    background:rgba(251, 246, 129, .08);
+    text-align: left;    
+    border-radius: 5px;
+    transform: translateY(-60%);
+    
 }
 .environment{
     text-align: justify;

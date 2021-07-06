@@ -9,8 +9,10 @@ import Clock from "../../Assets/Clock.png";
 import Checked from "../../Assets/Checked.png";
 import React, { useState } from "react";
 
-export const GoalCreater = ({ hideGoalCreater }) => {
+
+export const GoalCreater = ({ hideGoalCreater, adderValue }) => {
   const [goalName, setGoalName] = useState("");
+  const [colorBlockClass, setColorBlockClass] = useState("")
   
 
   const [descriptionContent, setDescriptionContent] = useState("");
@@ -19,6 +21,7 @@ export const GoalCreater = ({ hideGoalCreater }) => {
   const [isDone, setIsDone] = useState(false)
   const [isFavourite, setIsFavourite] = useState(false)
   const [image, setImage] = useState(null)
+  
   const setGoal = (e) => {
     setGoalName(e.target.value);
   };
@@ -38,8 +41,32 @@ export const GoalCreater = ({ hideGoalCreater }) => {
   const setFavourite = (e) => {
       setIsFavourite(!isFavourite)
   }
+  const getCurrentValue = () => {
+    console.log(selector.current.value);
+    console.log(colorBlockClass);
+    if (selector.current.value === 'brightness_of_life') {
+      setColorBlockClass('bright')
+    } else if (selector.current.value === 'family_and_love') {
+      setColorBlockClass('gathering')
+    } else if (selector.current.value === 'personal_growth') {
+      setColorBlockClass('self')
+    } else if (selector.current.value === 'investment') {
+      setColorBlockClass('longterm')
+    } else if (selector.current.value === 'environment_and_friends') {
+    setColorBlockClass('nature')
+    } else if (selector.current.value === 'business_and_career') {
+      setColorBlockClass('deal') 
+    } else if (selector.current.value === 'health_and_sports') {
+      setColorBlockClass('extreme')
+    } else if (selector.current.value === 'charity') {
+      setColorBlockClass('gratitude')
+    }
+  }
+
   
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w"
+  
+  
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA"
   const API_URL = "http://localhost:8000";
   const postData = async(data2, urll) => {
     const formData = new FormData();
@@ -63,6 +90,7 @@ export const GoalCreater = ({ hideGoalCreater }) => {
         body: JSON.stringify(data2),
         })
         .then(response => response.json())
+        
 }
 const createGoal = () => {
     const object = {
@@ -70,7 +98,7 @@ const createGoal = () => {
         description: descriptionContent,
         date: dateValue,
         comment: commentaryContent,
-        sphere: {slug: selector.current.value},
+        sphere: selector.current.value,
         // image: image,
         done: isDone,
         favorite: isFavourite
@@ -79,9 +107,28 @@ const createGoal = () => {
     console.log(selector.current.value);
     console.log(object);
     postData(object, 'goals/goals/')
+    hideGoalCreater()
 }
 const selector = React.createRef()
-
+// if (selector.current.value === 'brightness_of_life') {
+//     setColorBlockClass("bright")
+//   } else if (selector.current.value === 'business_and_career') {
+//     setColorBlockClass('deal')
+//   } else if (selector.current.value === 'environment_and_friends') {
+//     setColorBlockClass('nature')
+//   } else if (selector.current.value === 'investment') {
+//     setColorBlockClass('longterm')
+//   } else if (selector.current.value === 'family_and_love') {
+//     setColorBlockClass('gathering')
+//   } else if (selector.current.value === 'health_and_sports') {
+//     setColorBlockClass('extreme') 
+//   } else if (selector.current.value === 'personal_growth') {
+//     setColorBlockClass('self')
+//   } else if (selector.current.value === 'charity') {
+//     setColorBlockClass('gratitude')
+//   } else if (selector.current.value === null) {
+//     setColorBlockClass("")
+//   }
   return (
     <>
       <div className="goalCreater">
@@ -149,11 +196,14 @@ const selector = React.createRef()
           />
         </div>
         <div className="goalCreaterSphere">
-          <div className="goalColorBlock" />
-          <span className="goalColorText">Сфера:</span>
+          <div className={colorBlockClass} />
+          <span className="goalColorText" >Сфера:</span>
             
-            <select className="goalColorSelect" ref={selector}>
-              <option value="health_and_sport" >
+            <select className="goalColorSelect" ref={selector} onChange={getCurrentValue} value={adderValue}>
+              <option value="" selected disabled hidden>
+                Выбрать опцию
+              </option>
+              <option value="health_and_sports">
                 Здоровье и спорт
               </option>
               <option

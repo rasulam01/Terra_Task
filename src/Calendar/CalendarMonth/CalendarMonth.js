@@ -9,7 +9,7 @@ export const CalendarMonth = ({
   date,
   reminderVisibility,
   adderVisibility,
-  
+  hyper,
   hideAdder,
   hideReminderCreater,
   showReminderCreater,
@@ -26,7 +26,7 @@ export const CalendarMonth = ({
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -144,7 +144,7 @@ export const CalendarMonth = ({
 
                   return (
                     // end.start_date.slice(8, 10) === day && end.start_date.slice(5, 7) === month && end.start_date.slice(0, 4) === year ?
-                    end.start_date.slice(8, 10) === day.format("DD", "day") ? (
+                    end.start_date.slice(0, 10) === day.format().slice(0, 10) ? (
                       <div className={classes.join(" ")} key={i} onClick={showReminderCreater}>
                         <div onClick={getId}>
                           {end.title}
@@ -190,6 +190,7 @@ export const CalendarMonth = ({
               <>
                 <CalendarReminderAdder
                 hideAdder={hideAdder}
+                hyper="/calendarMonth"
                 />
                 <div className="cover"
                 onClick={hideAdder}

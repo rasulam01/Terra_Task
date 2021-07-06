@@ -17,7 +17,7 @@ export const CalendarReminderCreater = ({hideReminderCreater, id}) => {
     setTitle(e.target.value);
   };
   const API_URL = 'http://localhost:8000';
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w'
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA'
   const getBackend = async(id) => {
     const url = `${API_URL}/api/v1/calendar/month/${id}`;
     const res = await axios({
@@ -75,9 +75,8 @@ export const CalendarReminderCreater = ({hideReminderCreater, id}) => {
       
       
       
-      <div className="calendarReminderCreaterButtons">
-          <button className="calendarReminderCreaterDelayButton" onClick={hideReminderCreater}>Отложить</button>
-          <button className="calendarReminderCreaterDoneButton" onClick={hideReminderCreater}>Сделано</button>
+      <div className="calendarReminderCreaterButtons">          
+          <button className="calendarReminderCreaterDoneButton" onClick={hideReminderCreater}>Понял</button>
       </div>
     </div>
     <div className="cover"></div>

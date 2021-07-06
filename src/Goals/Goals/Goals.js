@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import AddSign from "../../Assets/AddSign.png";
 import axios from "axios";
 import Clock from "../../Assets/Clock.png";
-import Wheel from '../../Assets/BalanceWheel.png'
+import Wheel from "../../Assets/BalanceWheel.png";
 import { GoalCreater } from "../GoalCreater/GoalCreater";
+import { GoalReader } from "../GoalReader/GoalReader";
 
 export const Goals = ({
   sidebarStatusTrue,
@@ -24,20 +25,27 @@ export const Goals = ({
   const [businessAndCareer, setBusinessAndCareer] = useState([]);
   const [twoMonth, setTwoMonth] = useState([]);
   const [sixMonth, setSixMonth] = useState([]);
-  const [oneYear, setOneYear] = useState([]);  
-  const [info, setInfo] = useState(
-    familyAndLove,
-    personalGrowth,
-    charity,
-    investment,
-    environmentAndFriends,
-    brightnessOfLife,
-    healthAndSport,
-    businessAndCareer
-  );
+  const [oneYear, setOneYear] = useState([]);
+  const [key, setKey] = useState("");
+  const [readerVisibility, setReaderVisibility] = useState(false);
+  const [index, setIndex] = useState("");
+  const [identify, setIdentify] = useState("");
+  const [adderValue, setAdderValue] = useState("");
+  const [sphereValue, setSphereValue] = useState("")
+  // const [info, setInfo] = useState(
+  //   familyAndLove,
+  //   personalGrowth,
+  //   charity,
+  //   investment,
+  //   environmentAndFriends,
+  //   brightnessOfLife,
+  //   healthAndSport,
+  //   businessAndCareer
+  // );
+
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI0OTYzMzc1fQ.dtKdkrqFfPEjPZgA-NfzpIIQsE2wkV45bDCWAGAH-0w";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -50,20 +58,13 @@ export const Goals = ({
       },
     });
     const result = res.data;
-    console.log("WRITE POINT___________________");
     console.log(result);
-    console.log("WRITE POINT___________________");
-
     setData(result);
     return await res.data;
   };
 
   useEffect(() => {
     getData(`goals/`).then((value) => {
-      console.log(value);
-      console.log("Control___________________");
-      console.log(value.brightness_of_life);
-      console.log("eND___________________");
       setFamilyAndLove(value.family_and_love);
       setPersonalGrowth(value.personal_growth);
       setCharity(value.charity);
@@ -72,199 +73,272 @@ export const Goals = ({
       setBrightnessOfLife(value.brightness_of_life);
       setHealthAndSport(value.health_and_sports);
       setBusinessAndCareer(value.business_and_career);
-      setTwoMonth(value.two_mounth)
-      setSixMonth(value.six_mounth)
-      setOneYear(value.one_years)
-      setInfo(
-        value.brightness_of_life,
-        value.family_and_love,
-        value.personal_growth,
-        value.charity,
-        value.investment,
-        value.environment_and_friends,
-        value.health_and_sports,
-        value.business_and_career
-      );
+      setTwoMonth(value.two_mounth);
+      setSixMonth(value.six_mounth);
+      setOneYear(value.one_years);
+      // setInfo(
+      //   value.brightness_of_life,
+      //   value.family_and_love,
+      //   value.personal_growth,
+      //   value.charity,
+      //   value.investment,
+      //   value.environment_and_friends,
+      //   value.health_and_sports,
+      //   value.business_and_career
+      // );
 
       // console.log(value.charity);
-      console.log(familyAndLove);
-      console.log(personalGrowth);
-      console.log(charity);
-      console.log(investment);
-      console.log(environmentAndFriends);
-      console.log(brightnessOfLife);
-      console.log(healthAndSport);
-      console.log(businessAndCareer);
-      console.log(info);
-      console.log(data);
-      console.log(oneYear);
 
-      console.log(
-        info.map((item) => {
-          <div>{item}</div>;
-        })
-      );
+      // console.log(
+      //   info.map((item) => {
+      //     <div>{item}</div>;
+      //   })
+      // );
     });
   }, []);
-  console.log(familyAndLove);
-  console.log(personalGrowth);
-  console.log(charity);
-  console.log(investment);
-  console.log(environmentAndFriends);
-  console.log(brightnessOfLife);
-  console.log(healthAndSport);
-  console.log(businessAndCareer);
-  console.log(info);
-  console.log(data);
-  console.log(data.health_and_sports);
-  
+
+  const showReader = () => {
+    setReaderVisibility(true);
+  };
+  const hideReader = () => {
+    setReaderVisibility(false);
+  };
+  const getAdderValue = (e) => {
+    setAdderValue(e.target.getAttribute("value"));
+    console.log(e.target.getAttribute("value"));
+    console.log(adderValue);
+    showGoalCreater();
+  };
+
   return (
     <BrowserRouter>
       <>
+        <div className="lol">
+          <NavLink activeClassName="totalTimeSpansSelected" to="/goalsTime">
+            <div className="goalsSection">Время</div>
+          </NavLink>
+          <NavLink activeClassName="totalTimeSpansSelected" to="/goalsBalance">
+            <div className="goalsSection">Баланс</div>
+          </NavLink>
+        </div>
         <div className={sidebarStatusTrue ? "goalsOpened" : "goals"}>
-          <div className="goalsSections">
-            <NavLink activeClassName="totalTimeSpansSelected" to="/goalsTime">
-              <div>Время</div>
-            </NavLink>
-            <NavLink
-              activeClassName="totalTimeSpansSelected"
-              to="/goalsBalance"
-            >
-              <div>Баланс</div>
-            </NavLink>
-          </div>          
           <Switch>
             <Route exact path="/goalsTime">
               <div className="goalsCategories">
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">2 месяца</div>
                   {twoMonth.map((item, i) => {
-                    console.log(item);
-                    console.log(item.sphere);
-                    const classes = []
-                    const species = []
-                    if (item.sphere === 'charity') {
-                      classes.push('giveaway')
-                      species.push('sweetheart')
-                    } if (item.sphere === 'brightness_of_life') {
-                      classes.push('light')
-                      species.push('brightness')
-                    } if (item.sphere === 'investment') {
-                      classes.push('corporate')
-                      species.push('investment')
-                    } if (item.sphere === 'environment_and_friends') {
-                    classes.push('surroundings')
-                    species.push('environment')
-                    } if (item.sphere === 'family_and_love') {
-                      classes.push('attachment')
-                      species.push('love')
-                    } if (item.sphere === 'charity') {
-                      classes.push('benevolence')
-                      species.push('sweetheart')
-                    } if (item.sphere === 'business_and_career') {
-                      classes.push('money')
-                      species.push('career')
-                    } if (item.sphere === 'health_and_sport') {
-                      classes.push('wellness')
-                      species.push('sport')
+                    let getId = () => {
+                      setKey(twoMonth);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      console.log(item.data);
+                      console.log(item.sphere);
+                      showReader();
+                    };
+
+                    const classes = [];
+                    const species = [];
+                    if (item.sphere === "charity") {
+                      classes.push("giveaway");
+                      species.push("sweetheart");
                     }
-                    
-                      
-                    
-                    
-                    
-                   
-                  return (
-                    <>           
-                    {console.log(classes)}         
-                    {console.log(species)}
-                            
-                      <div className={species.join(" ")}>{item.data}</div>
-                      <div className={classes.join(" ")}><img src={Clock} alt="time" className="goalsCategoryImg"/>
-                      <span className="goalsCategoryTime">{item.date.slice(8, 10) + "." + item.date.slice(5, 7)}</span>
-                      </div>
-                    </>
-                  )})}
+                    if (item.sphere === "brightness_of_life") {
+                      classes.push("light");
+                      species.push("brightness");
+                    }
+                    if (item.sphere === "investment") {
+                      classes.push("corporate");
+                      species.push("investment");
+                    }
+                    if (item.sphere === "environment_and_friends") {
+                      classes.push("surroundings");
+                      species.push("environment");
+                    }
+                    if (item.sphere === "family_and_love") {
+                      classes.push("attachment");
+                      species.push("love");
+                    }
+                    if (item.sphere === "personal_growth") {
+                      classes.push("development");
+                      species.push("growth");
+                    }
+                    if (item.sphere === "business_and_career") {
+                      classes.push("money");
+                      species.push("career");
+                    }
+                    if (item.sphere === "health_and_sports") {
+                      classes.push("wellness");
+                      species.push("sport");
+                    }
+
+                    return (
+                      <>
+                        <div className={species.join(" ")} onClick={getId}>
+                          {item.data}
+                        </div>
+                        <div className={classes.join(" ")} onClick={getId}>
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
+                  <div>
+                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                  </div>
                 </div>
+
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">6 месяца</div>
-                  {sixMonth.map((item) => {
-                    const classes = []
-                    const species = []
-                    if (item.sphere === 'charity') {
-                      classes.push('giveaway')
-                      species.push('sweetheart')
-                    } if (item.sphere === 'brightness_of_life') {
-                      classes.push('light')
-                      species.push('brightness')
-                    } if (item.sphere === 'investment') {
-                      classes.push('corporate')
-                      species.push('investment')
-                    } if (item.sphere === 'environment_and_friends') {
-                    classes.push('surroundings')
-                    species.push('environment')
-                    } if (item.sphere === 'family_and_love') {
-                      classes.push('attachment')
-                      species.push('love')
-                    } if (item.sphere === 'charity') {
-                      classes.push('benevolence')
-                      species.push('sweetheart')
-                    } if (item.sphere === 'business_and_career') {
-                      classes.push('money')
-                      species.push('career')
-                    } if (item.sphere === 'health_and_sport') {
-                      classes.push('wellness')
-                      species.push('sport')
+                  {sixMonth.map((item, i) => {
+                    let getId = () => {
+                      setKey(sixMonth);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(index);
+                      console.log(item.id);
+                      showReader();
+                    };
+                    const classes = [];
+                    const species = [];
+                    if (item.sphere === "charity") {
+                      classes.push("giveaway");
+                      species.push("sweetheart");
+                    }
+                    if (item.sphere === "brightness_of_life") {
+                      classes.push("light");
+                      species.push("brightness");
+                    }
+                    if (item.sphere === "investment") {
+                      classes.push("corporate");
+                      species.push("investment");
+                    }
+                    if (item.sphere === "environment_and_friends") {
+                      classes.push("surroundings");
+                      species.push("environment");
+                    }
+                    if (item.sphere === "family_and_love") {
+                      classes.push("attachment");
+                      species.push("love");
+                    }
+                    if (item.sphere === "personal_growth") {
+                      classes.push("development");
+                      species.push("growth");
+                    }
+                    if (item.sphere === "business_and_career") {
+                      classes.push("money");
+                      species.push("career");
+                    }
+                    if (item.sphere === "health_and_sports") {
+                      classes.push("wellness");
+                      species.push("sport");
                     }
                     return (
-                    <>
-                    {console.log(sixMonth)}
-                      <div className={species.join(" ")}>{item.data}</div>
-                      <div className={classes.join(" ")}><img src={Clock} alt="time" className="goalsCategoryImg"/>
-                      <span className="goalsCategoryTime">{item.date.slice(8, 10) + "." + item.date.slice(5, 7)}</span>
-                      </div>
-                    </>
-                  )})}
+                      <>
+                        <div className={species.join(" ")} onClick={getId}>
+                          {item.data}
+                        </div>
+                        <div className={classes.join(" ")} onClick={getId}>
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
+                  <div>
+                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                  </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">1 год</div>
                   {oneYear.map((item, i) => {
-                    const classes = []
-                    const species = []
-                    if (item.sphere === 'charity') {
-                      classes.push('giveaway')
-                      species.push('sweetheart')
-                    } if (item.sphere === 'brightness_of_life') {
-                      classes.push('light')
-                      species.push('brightness')
-                    } if (item.sphere === 'investment') {
-                      classes.push('corporate')
-                      species.push('investment')
-                    } if (item.sphere === 'environment_and_friends') {
-                    classes.push('surroundings')
-                    species.push('environment')
-                    } if (item.sphere === 'family_and_love') {
-                      classes.push('attachment')
-                      species.push('love')
-                    } if (item.sphere === 'charity') {
-                      classes.push('benevolence')
-                      species.push('sweetheart')
-                    } if (item.sphere === 'business_and_career') {
-                      classes.push('money')
-                      species.push('career')
-                    } if (item.sphere === 'health_and_sport') {
-                      classes.push('wellness')
-                      species.push('sport')
+                    let getId = () => {
+                      setKey(oneYear);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(index);
+                      console.log(item.id);
+                      showReader();
+                    };
+                    const classes = [];
+                    const species = [];
+                    if (item.sphere === "charity") {
+                      classes.push("giveaway");
+                      species.push("sweetheart");
+                    }
+                    if (item.sphere === "brightness_of_life") {
+                      classes.push("light");
+                      species.push("brightness");
+                    }
+                    if (item.sphere === "investment") {
+                      classes.push("corporate");
+                      species.push("investment");
+                    }
+                    if (item.sphere === "environment_and_friends") {
+                      classes.push("surroundings");
+                      species.push("environment");
+                    }
+                    if (item.sphere === "family_and_love") {
+                      classes.push("attachment");
+                      species.push("love");
+                    }
+                    if (item.sphere === "personal_growth") {
+                      classes.push("development");
+                      species.push("growth");
+                    }
+                    if (item.sphere === "business_and_career") {
+                      classes.push("money");
+                      species.push("career");
+                    }
+                    if (item.sphere === "health_and_sports") {
+                      classes.push("wellness");
+                      species.push("sport");
                     }
                     return (
-                    <>
-                      
-                      <div className={species.join(" ")}>{item.data}</div>
-                      <div className={classes.join(" ")}><img src={Clock} alt="time" className="goalsCategoryImg"/>
-                      <span className="goalsCategoryTime">{item.date.slice(8, 10) + "." + item.date.slice(5, 7)}</span>
-                      </div>
-                    </>
-                  )})}
+                      <>
+                        <div className={species.join(" ")} onClick={getId}>
+                          {item.data}
+                        </div>
+                        <div className={classes.join(" ")} onClick={getId}>
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
+                  <div>
+                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                  </div>
                 </div>
               </div>
             </Route>
@@ -273,214 +347,447 @@ export const Goals = ({
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Яркость жизни</div>
 
-                  {brightnessOfLife.map((item) => (
-                    <>
-                      
-                      <div className="goalsCategoryDataBrightness">
-                        {item.data}
-                      </div>
-                      <div className="goalsCategoryDateBrightness">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                      
-                    </>
-                  ))}
+                  {brightnessOfLife.map((item, i) => {
+                    let getId = () => {
+                      setKey(brightnessOfLife);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div
+                          className="goalsCategoryDataBrightness"
+                          onClick={getId}
+                        >
+                          {item.data}
+                        </div>
+                        <div
+                          className="goalsCategoryDateBrightness"
+                          onClick={getId}
+                        >
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="brightness_of_life"
+                    />
                   </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Семья и любовь</div>
 
-                  {familyAndLove.map((item) => (
-                    <>
-                      <div className="goalsCategoryDataLove">{item.data}</div>
-                      <div className="goalsCategoryDateLove">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                    </>
-                  ))}
+                  {familyAndLove.map((item, i) => {
+                    let getId = () => {
+                      setKey(familyAndLove);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div className="goalsCategoryDataLove" onClick={getId}>
+                          {item.data}
+                        </div>
+                        <div className="goalsCategoryDateLove" onClick={getId}>
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="family_and_love"
+                    />
                   </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Окружение и друзья</div>
 
-                  {environmentAndFriends.map((item) => (
-                    <>
-                      <div className="goalsCategoryDataEnvironment">
-                        {item.data}
-                      </div>
-                      <div className="goalsCategoryDateEnvironment">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                    </>
-                  ))}
+                  {environmentAndFriends.map((item, i) => {
+                    let getId = () => {
+                      setKey(environmentAndFriends);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div
+                          className="goalsCategoryDataEnvironment"
+                          onClick={getId}
+                        >
+                          {item.data}
+                        </div>
+                        <div
+                          className="goalsCategoryDateEnvironment"
+                          onClick={getId}
+                        >
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="environment_and_friends"
+                    />
                   </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Финансы и инвестиции</div>
 
-                  {investment.map((item) => (
-                    <>
-                      <div className="goalsCategoryDataInvestment">
-                        {item.data}
-                      </div>
-                      <div className="goalsCategoryDateInvestment">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                    </>
-                  ))}
+                  {investment.map((item, i) => {
+                    let getId = () => {
+                      setKey(investment);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div
+                          className="goalsCategoryDataInvestment"
+                          onClick={getId}
+                        >
+                          {item.data}
+                        </div>
+                        <div
+                          className="goalsCategoryDateInvestment"
+                          onClick={getId}
+                        >
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="investment"
+                    />
                   </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Личный рост</div>
 
-                  {personalGrowth.map((item) => (
-                    <>
-                      <div className="goalsCategoryDataGrowth">{item.data}</div>
-                      <div className="goalsCategoryDateGrowth">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                    </>
-                  ))}
+                  {personalGrowth.map((item, i) => {
+                    let getId = () => {
+                      setKey(personalGrowth);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div
+                          className="goalsCategoryDataGrowth"
+                          onClick={getId}
+                        >
+                          {item.data}
+                        </div>
+                        <div
+                          className="goalsCategoryDateGrowth"
+                          onClick={getId}
+                        >
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="personal_growth"
+                    />
                   </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Бизнес и карьера</div>
 
-                  {businessAndCareer.map((item) => (
-                    <>
-                      <div className="goalsCategoryDataCareer">{item.data}</div>
-                      <div className="goalsCategoryDateCareer">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                    </>
-                  ))}
+                  {businessAndCareer.map((item, i) => {
+                    let getId = () => {
+                      setKey(businessAndCareer);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div
+                          className="goalsCategoryDataCareer"
+                          onClick={getId}
+                        >
+                          {item.data}
+                        </div>
+                        <div
+                          className="goalsCategoryDateCareer"
+                          onClick={getId}
+                        >
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="business_and_career"
+                    />
                   </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Здоровье и спорт</div>
 
-                  {healthAndSport.map((item) => (
-                    <>
-                      <div className="goalsCategoryDataSport">{item.data}</div>
-                      <div className="goalsCategoryDateSport">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                    </>
-                  ))}
+                  {healthAndSport.map((item, i) => {
+                    let getId = () => {
+                      setKey(healthAndSport);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div className="goalsCategoryDataSport" onClick={getId}>
+                          {item.data}
+                        </div>
+                        <div className="goalsCategoryDateSport" onClick={getId}>
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="health_and_sports"
+                    />
                   </div>
                 </div>
                 <div className="goalsCategory">
                   <div className="goalsCategoryTitle">Благотворительность</div>
 
-                  {charity.map((item) => (
-                    <>
-                      <div className="goalsCategoryDataCharity">
-                        {item.data}
-                      </div>
-                      <div className="goalsCategoryDateCharity">
-                        <img
-                          src={Clock}
-                          alt="time"
-                          className="goalsCategoryImg"
-                        />
-                        <span className="goalsCategoryTime">
-                          {item.date.slice(8, 10) + "." + item.date.slice(5, 7)}
-                        </span>
-                      </div>
-                    </>
-                  ))}
+                  {charity.map((item, i) => {
+                    let getId = () => {
+                      setKey(charity);
+                      setIndex(i);
+                      setIdentify(item.id);
+                      setSphereValue(item.sphere)
+                      console.log(item.id);
+                      console.log(index);
+                      showReader();
+                    };
+                    return (
+                      <>
+                        <div
+                          className="goalsCategoryDataCharity"
+                          onClick={getId}
+                        >
+                          {item.data}
+                        </div>
+                        <div
+                          className="goalsCategoryDateCharity"
+                          onClick={getId}
+                        >
+                          <img
+                            src={Clock}
+                            alt="time"
+                            className="goalsCategoryImg"
+                          />
+                          <span className="goalsCategoryTime">
+                            {item.date.slice(8, 10) +
+                              "." +
+                              item.date.slice(5, 7)}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
 
                   <div>
-                    <img src={AddSign} alt="Add" onClick={showGoalCreater} />
+                    <img
+                      src={AddSign}
+                      alt="Add"
+                      onClick={getAdderValue}
+                      value="charity"
+                    />
                   </div>
                 </div>
               </div>
             </Route>
           </Switch>
         </div>
-        <div className={sidebarStatusTrue ? 'goalsBalanceWheel' : 'goalsBalanceWheelOpened'}>
-            <div className="goalsBalanceWheelTitle">
-              Баланс целей
-            </div>
-            <div className="goalsBalanceWheelWheel">
-              <img src={Wheel} alt="tyre" />
-            </div>
+        <div
+          className={
+            sidebarStatusTrue ? "goalsBalanceWheel" : "goalsBalanceWheelOpened"
+          }
+        >
+          <div className="goalsBalanceWheelTitle">Баланс целей</div>
+          <div className="goalsBalanceWheelWheel">
+            <img src={Wheel} alt="tyre" />
+          </div>
         </div>
-
-        {goalCreaterVisibility ? (
+        <div
+          className={sidebarStatusTrue ? "goalsMission" : "goalsMissionOpened"}
+        >
+          <div className="goalsMissionTitle">nnn</div>
+          <div className="goalsMissionDescription">mmm</div>
+        </div>
+        <div
+          className={
+            sidebarStatusTrue
+              ? "goalsGoalsAchieved"
+              : "goalsGoalsAchievedOpened"
+          }
+        >
+          <div className="goalsGoalsAchievedTitle">Целей достигнуто</div>
+        </div>
+        <div
+          className={
+            sidebarStatusTrue ? "goalsGoalsInFocus" : "goalsGoalsInFocusOpened"
+          }
+        >
+          <div className="goalsGoalsInFocusTitle">Цели в фокусе</div>
+        </div>
+        <Route exact path="/goalsTime">
+          {goalCreaterVisibility ? (
+            <>
+              <GoalCreater hideGoalCreater={hideGoalCreater} />
+              <div className="cover" onClick={hideGoalCreater} />
+            </>
+          ) : null}
+        </Route>
+        <Route exact path="/goalsBalance">
+          {goalCreaterVisibility ? (
+            <>
+              <GoalCreater
+                hideGoalCreater={hideGoalCreater}
+                adderValue={adderValue}
+              />
+              <div className="cover" onClick={hideGoalCreater} />
+            </>
+          ) : null}
+        </Route>
+        {readerVisibility ? (
           <>
-            <GoalCreater hideGoalCreater={hideGoalCreater} />
-            <div className="cover" onClick={hideGoalCreater} />
+            <GoalReader
+              id={key[index]}
+              identify={identify}
+              hideReader={hideReader}
+              sphere={sphereValue}
+            />
+            <div className="cover" onClick={hideReader} />
           </>
         ) : null}
       </>

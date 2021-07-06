@@ -134,6 +134,72 @@
     margin-top: 2%;
     margin-left: 10%;
 }
+.bright {
+    height: 18px;
+    width: 18px;
+    background: rgb(105, 228, 255);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.gathering {
+    height: 18px;
+    width: 18px;
+    background: rgb(185, 126, 255);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.longterm {
+    height: 18px;
+    width: 18px;
+    background: rgb(129, 255, 179);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.extreme {
+    height: 18px;
+    width: 18px;
+    background: rgb(255, 168, 118);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.gratitude {
+    height: 18px;
+    width: 18px;
+    background: rgb(255, 113, 216);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.nature {
+    height: 18px;
+    width: 18px;
+    background: rgb(254, 109, 109);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.self {
+    height: 18px;
+    width: 18px;
+    background: rgb(251, 246, 129);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+.deal {
+    height: 18px;
+    width: 18px;
+    background: rgb(100, 189, 255);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+
+
 .goalColorText{
     position: absolute;
     left: 18%;
@@ -149,11 +215,17 @@
     width: 132px;
     height: 46px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #3175D6;
     background: #3175D6;
     font-size: 18px;
     color: white;
     transform: translate(110%, -10%);
+    transition: .15s;
+}
+.saveButton:active{
+    background: white;
+    color: #3175D6;
+
 }
 
 

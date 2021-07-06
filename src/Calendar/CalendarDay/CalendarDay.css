@@ -41,11 +41,11 @@
 }
 
 .calendarDayTimeBlockData{
-    height: calc(100% / 24);    
+    min-height: calc(100% / 24);    
     
     width: 100%;
     transform: translateX(-7%);
-    text-align: justify;
+    
     
 }
 .calendarDayTimeBlock span + span{
@@ -57,6 +57,13 @@
     /* top: 4.5%; */
     left: 0;
     width: 100%;                     
+}
+
+.dataText{
+    text-align: left;
+}
+.dataText:hover{
+    z-index: 1;
 }
 
 

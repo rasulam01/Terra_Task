@@ -86,7 +86,7 @@ function App() {
               <TotalHeader sidebarStatusTrue={sidebarStatusTrue} />
             </Route>
             <Route
-              exact
+              
               path={[
                 "/calendar",
                 "/calendarDay",
@@ -132,7 +132,7 @@ function App() {
                 createFormVisibility={createFormVisibility}
               />
             </Route>
-            <Route exact path="/calendarDay">
+            <Route path="/calendarDay">
               <CalendarDay
                 date={date}
                 reminderVisibility={reminderVisibility}
@@ -141,9 +141,10 @@ function App() {
                 adderVisibility={adderVisibility}
                 showAdder={showAdder}
                 hideAdder={hideAdder}
+                
               />
             </Route>
-            <Route exact path="/calendarWeek">
+            <Route path="/calendarWeek">
               <CalendarWeek
                 date={date}
                 reminderVisibility={reminderVisibility}
@@ -152,9 +153,10 @@ function App() {
                 adderVisibility={adderVisibility}
                 showAdder={showAdder}
                 hideAdder={hideAdder}
+                
               />
             </Route>
-            <Route exact path="/calendarMonth">
+            <Route path="/calendarMonth">
               <CalendarMonth
                 date={date}
                 reminderVisibility={reminderVisibility}
@@ -163,6 +165,7 @@ function App() {
                 adderVisibility={adderVisibility}
                 showAdder={showAdder}
                 hideAdder={hideAdder}
+                
               />
             </Route>
             <Route exact path={["/goals", "/goalsTime", "/goalsBalance"]}>
