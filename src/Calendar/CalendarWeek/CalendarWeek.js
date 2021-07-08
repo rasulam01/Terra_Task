@@ -10,11 +10,12 @@ export const CalendarWeek = ({
   reminderVisibility,
   adderVisibility,  
   hideAdder,
-  hyper,
+  
   hideReminderCreater,
   showReminderCreater,
 }) => {
   const [calendar, setCalendar] = useState([]);
+  const [hours, setHours] = useState([])
   const [value, setValue] = useState(moment());
   const [backendData, setBackendData] = useState([]);
   const [back, setBack] = useState("");
@@ -26,7 +27,7 @@ export const CalendarWeek = ({
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1ODI3MDM2fQ.Flosc9Ev9IRGQXNR-kp-O1N5qsWPrIoSJL5SQ5n_cRg";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -49,6 +50,7 @@ export const CalendarWeek = ({
 
   useEffect(() => {
     const temporary = [];
+    const temporaryHours = [];
     const week = startingWeek.clone().subtract(1, "day");
     const endWeek = endingWeek.clone().subtract(1, "day");
     const hour = value.clone().startOf('day').subtract(1, 'hour')
@@ -63,8 +65,23 @@ export const CalendarWeek = ({
       setCalendar(temporary);
       getData("calendar/month/");
     }
+    while (hour.isBefore(endHour, 'hour')) {
+      temporaryHours.push(
+      Array(24)
+      .fill(0)
+      .map(() => hour.add(1, 'hour').clone())
+      );
+      setHours(temporaryHours)
+      
+      
+    }
     
-  }, [value]);
+    
+  }, [date]);
+
+  const y = (e) => {
+    console.log(e.clientY);
+  }
 
   
 
@@ -79,6 +96,15 @@ export const CalendarWeek = ({
           <div>Пятница</div>
           <div>Суббота</div>
           <div>Воскресенье</div>
+        </div>
+        <div className="calendarDayTimeBlockWeek">
+        {hours.map((week) =>
+          week.map((day) => (
+            <span className="calendarDayTimeBlockData">
+              {day.format("HH:mm")}
+            </span>
+          ))
+        )}
         </div>
         {calendar.map((week, i) => (
           <div className="calendarMonthWeek">
@@ -95,7 +121,55 @@ export const CalendarWeek = ({
                     console.log(end[i]);
                     console.log(i);
                   };
+
+                  let timeSpan = end.start_date.slice(11, 13);
+                  let vertical;
+                  let longitude;
+                  let startHourPiece = end.start_date.slice(11, 13);
+                  let endHourPiece = end.end_date.slice(11, 13);
+                  let hourDifference = endHourPiece - startHourPiece;
                   let classes = [];
+                  if (timeSpan === "00") vertical = 20;
+                  if (timeSpan === "01") vertical = 40;
+                  if (timeSpan === "02") vertical = 60;
+                  if (timeSpan === "03") vertical = 80;
+                  if (timeSpan === "04") vertical = 100;
+                  if (timeSpan === "05") vertical = 120;
+                  if (timeSpan === "06") vertical = 140;
+                  if (timeSpan === "07") vertical = 160;
+                  if (timeSpan === "08") vertical = 180;
+                  if (timeSpan === "09") vertical = 200;
+                  if (timeSpan === "10") vertical = 220;
+                  if (timeSpan === "11") vertical = 240;
+                  if (timeSpan === "12") vertical = 260;
+                  if (timeSpan === "13") vertical = 280;
+                  if (timeSpan === "14") vertical = 300;
+                  if (timeSpan === "15") vertical = 320;
+                  if (timeSpan === "16") vertical = 340;
+                  if (timeSpan === "17") vertical = 360;
+                  if (timeSpan === "18") vertical = 380;
+                  if (timeSpan === "19") vertical = 400;
+                  if (timeSpan === "20") vertical = 420;
+                  if (timeSpan === "21") vertical = 440;
+                  if (timeSpan === "22") vertical = 460;
+                  if (timeSpan === "23") vertical = 480;
+
+                  if (hourDifference === 2) longitude = 60;
+                  if (hourDifference === 3) longitude = 80;
+                  if (hourDifference === 4) longitude = 100;
+                  if (hourDifference === 5) longitude = 120;
+                  if (hourDifference === 6) longitude = 140;
+                  if (hourDifference === 7) longitude = 160;
+                  if (hourDifference === 8) longitude = 180;
+                  if (hourDifference === 9) longitude = 200;
+                  if (hourDifference === 10) longitude = 220;
+                  if (hourDifference === 11) longitude = 240;
+                  if (hourDifference === 12) longitude = 260;
+                  if (hourDifference === 13) longitude = 280;
+                  if (hourDifference === 14) longitude = 300;
+                  if (hourDifference === 15) longitude = 320;
+
+
                   if (end.sphere.title === "Здоровье и спорт")
                     classes.push("health");
                   if (end.sphere.title === "Бизнес и карьера")
@@ -118,6 +192,15 @@ export const CalendarWeek = ({
                       className={classes.join(" ")}
                       key={i}
                       onClick={showReminderCreater}
+                      style={{
+                        position: "sticky",
+                        top:
+                          end.start_date.slice(11, 13) === timeSpan
+                            ? vertical + "px"
+                            : "",
+                        height: longitude,
+                        
+                      }}
                     >
                       <div onClick={getId}>{end.title}</div>
                     </div>
@@ -125,6 +208,7 @@ export const CalendarWeek = ({
                 })}
               </div>
             ))}
+            
             {reminderVisibility ? (
               <>
                 <CalendarReminderCreater
@@ -147,6 +231,7 @@ export const CalendarWeek = ({
             ) : null}
           </div>
         ))}
+        
       </div>
     </>
   );

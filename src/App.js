@@ -68,6 +68,18 @@ function App() {
   const nextMonth = () => {
     setDate(() => date.clone().add(1, "month"));
   };
+  const previousWeek = () => {
+    setDate(() => date.clone().subtract(1, 'week'))
+  }
+  const nextWeek = () => {
+    setDate(() => date.clone().add(1, 'week'))
+  }
+  const previousDay = () => {
+    setDate(() => date.clone().subtract(1, 'day'))
+  }
+  const nextDay = () => {
+    setDate(() => date.clone().add(1, 'day'))
+  }
 
   const calendar = [];
   const day = startingDay.clone();
@@ -95,12 +107,17 @@ function App() {
               ]}
             >
               <CalendarHeader
+                date={date}
                 sidebarStatusTrue={sidebarStatusTrue}
                 previousMonth={previousMonth}
                 showToday={showToday}
                 nextMonth={nextMonth}
                 showAdder={showAdder}
                 hideAdder={hideAdder}
+                previousWeek={previousWeek}
+                nextWeek={nextWeek}
+                previousDay={previousDay}
+                nextDay={nextDay}
               />
             </Route>
             <Route exact path={["/goals", 

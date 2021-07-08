@@ -24,7 +24,7 @@ export const CalendarDay = ({
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1NTgwMDk0fQ.drPf4CCmMCCHjsFKdYqRIA8dP4z8_DhjxF1Up1JQ9OA";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1ODI3MDM2fQ.Flosc9Ev9IRGQXNR-kp-O1N5qsWPrIoSJL5SQ5n_cRg";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -59,7 +59,7 @@ export const CalendarDay = ({
       setCalendar(temporary);
       getData("calendar/month/");
     }
-  }, [date, backendData]);
+  }, [date]);
 
   console.log(calendar);
   console.log(calendar.map((week) => week.map((day) => day.format("HH:mm"))));
