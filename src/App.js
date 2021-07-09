@@ -70,6 +70,7 @@ function App() {
   };
   const previousWeek = () => {
     setDate(() => date.clone().subtract(1, 'week'))
+    
   }
   const nextWeek = () => {
     setDate(() => date.clone().add(1, 'week'))
@@ -88,7 +89,6 @@ function App() {
     calendar.push(day.clone());
     day.add(1, "day");
   }
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -106,8 +106,7 @@ function App() {
                 "/calendarMonth",
               ]}
             >
-              <CalendarHeader
-                date={date}
+              <CalendarHeader                
                 sidebarStatusTrue={sidebarStatusTrue}
                 previousMonth={previousMonth}
                 showToday={showToday}

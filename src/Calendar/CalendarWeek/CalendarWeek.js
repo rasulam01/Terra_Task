@@ -10,7 +10,6 @@ export const CalendarWeek = ({
   reminderVisibility,
   adderVisibility,  
   hideAdder,
-  
   hideReminderCreater,
   showReminderCreater,
 }) => {
@@ -22,12 +21,12 @@ export const CalendarWeek = ({
 
   window.moment = moment;
   moment.updateLocale("en", { week: { dow: 1 } });
-  const startingWeek = value.clone().startOf("week").startOf("day");
-  const endingWeek = value.clone().endOf("week").endOf("day");
+  const startingWeek = date.clone().startOf("week").startOf("day");
+  const endingWeek = date.clone().endOf("week").endOf("day");
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1ODI3MDM2fQ.Flosc9Ev9IRGQXNR-kp-O1N5qsWPrIoSJL5SQ5n_cRg";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1OTEzOTM5fQ.DdPSnvQR85W2m_GtTCv59jHS5Zy-ZTtAcxTTSo-q6O8";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -56,16 +55,20 @@ export const CalendarWeek = ({
     const hour = value.clone().startOf('day').subtract(1, 'hour')
     const endHour = value.clone().endOf('day').subtract(1, 'hour')
 
-    while (week.isBefore(endWeek)) {
+    while (week.isBefore(endWeek, 'week')) {
+      // console.log('week ', week)
       temporary.push(
         Array(7)
           .fill(0)
           .map(() => week.add(1, "day").clone())
       );
+      
       setCalendar(temporary);
-      getData("calendar/month/");
+      getData('calendar/month/')
+      
     }
     while (hour.isBefore(endHour, 'hour')) {
+      
       temporaryHours.push(
       Array(24)
       .fill(0)
@@ -74,7 +77,12 @@ export const CalendarWeek = ({
       setHours(temporaryHours)
       
       
+      
     }
+    // console.log('date: ',date);
+    // console.log('backend: ', backendData);
+    // console.log('endWeek: ', endWeek);
+
     
     
   }, [date]);
@@ -86,7 +94,6 @@ export const CalendarWeek = ({
   
 
   return (
-    <>
       <div className="calendarWeek">
         <div className="calendarMonthDayHeader">
           <div>Понедельник</div>
@@ -99,17 +106,23 @@ export const CalendarWeek = ({
         </div>
         <div className="calendarDayTimeBlockWeek">
         {hours.map((week) =>
-          week.map((day) => (
+          week.map((day) => {
+          
+            return (
             <span className="calendarDayTimeBlockData">
               {day.format("HH:mm")}
             </span>
-          ))
+            )
+          })
         )}
         </div>
-        {calendar.map((week, i) => (
+        {calendar.map((week, i) => {
+          
+          return (
           <div className="calendarMonthWeek">
-            {week.map((day, i) => (
-              
+            {week.map((day, i) => {
+            
+              return (
               <div className="dayWeek" onClick={() => setValue(day)}>
                 <div className="digit">{day.format("D")}</div>
 
@@ -206,8 +219,9 @@ export const CalendarWeek = ({
                     </div>
                   ) : null;
                 })}
-              </div>
-            ))}
+              </div>)
+}
+              )}
             
             {reminderVisibility ? (
               <>
@@ -230,9 +244,9 @@ export const CalendarWeek = ({
               </>
             ) : null}
           </div>
-        ))}
+        )}
+        )}
         
       </div>
-    </>
   );
 };

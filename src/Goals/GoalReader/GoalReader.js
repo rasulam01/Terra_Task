@@ -81,7 +81,7 @@ export const GoalReader = ({ hideReader, id, identify, sphere }) => {
   };
     
     
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1ODI3MDM2fQ.Flosc9Ev9IRGQXNR-kp-O1N5qsWPrIoSJL5SQ5n_cRg"
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1OTEzOTM5fQ.DdPSnvQR85W2m_GtTCv59jHS5Zy-ZTtAcxTTSo-q6O8"
     const API_URL = "http://localhost:8000";
 //     const postData = async(data2, urll) => {
 //       const formData = new FormData();

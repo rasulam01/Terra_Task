@@ -13,7 +13,7 @@ import { useState } from "react";
 import moment from "moment";
 
 export const CalendarHeader = ({
-  date,
+  
   sidebarStatusTrue,
   previousMonth,
   showToday,

@@ -12,7 +12,7 @@ export const CalendarDay = ({
   hideAdder,
   hideReminderCreater,
   showReminderCreater,
-  hyper,
+  
 }) => {
   const [calendar, setCalendar] = useState([]);
   const [value, setValue] = useState(moment());
@@ -24,7 +24,7 @@ export const CalendarDay = ({
 
   const API_URL = "http://localhost:8000";
   const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1ODI3MDM2fQ.Flosc9Ev9IRGQXNR-kp-O1N5qsWPrIoSJL5SQ5n_cRg";
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjI1OTEzOTM5fQ.DdPSnvQR85W2m_GtTCv59jHS5Zy-ZTtAcxTTSo-q6O8";
   const getData = async (urll) => {
     const url = `${API_URL}/api/v1/${urll}`;
     const res = await axios({
@@ -38,9 +38,8 @@ export const CalendarDay = ({
     });
     const result = res.data;
     setBackendData(result);
-    console.log(res.data);
-    console.log(result);
-    console.log(backendData);
+    
+    
     return await res.data;
   };
 
@@ -52,21 +51,24 @@ export const CalendarDay = ({
     while (startingDay.isBefore(endingDay, "hour")) {
       temporary.push(
         Array(24)
-          .fill(0)
-          .map(() => startingDay.add(1, "hour").clone())
-      );
-
+        .fill(0)
+        .map(() => startingDay.add(1, "hour").clone())
+        );
+        
+        
       setCalendar(temporary);
       getData("calendar/month/");
     }
+    
   }, [date]);
 
-  console.log(calendar);
-  console.log(calendar.map((week) => week.map((day) => day.format("HH:mm"))));
-  console.log(backendData);
+  // console.log(calendar);
+  // console.log(calendar.map((week) => week.map((day) => day.format("HH:mm"))));
+  // console.log(backendData);
   const getClientY = (e) => {
     console.log(e.clientY);
   };
+  
 
   return (
     <div className="calendarDay">
@@ -77,11 +79,13 @@ export const CalendarDay = ({
 
       <div className="calendarDayTimeBlock">
         {calendar.map((week) =>
-          week.map((day) => (
+          week.map((day) => {
+           return (
+            
             <span className="calendarDayTimeBlockData" onClick={getClientY}>
               {day.format("HH:mm")}
             </span>
-          ))
+          )})
         )}
         <div className="calendarBackendBlockData">
           {backendData.map((end, i) => {
